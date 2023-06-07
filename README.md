@@ -1,6 +1,8 @@
 # Mock Builder Development
 
-<!-- > See the [Placeholdate plugin page](https://www.figma.com/community/plugin/1098444899707858859/Placeholdate) for using Placeholdate in Figma. -->
+> This is based off of my Placeholdate plugin
+
+<!-- > See the [Mock Builder plugin page](https://www.figma.com/community/plugin/1098444899707858859/Placeholdate) for using Mock Builder in Figma. -->
 
 To get started:
 

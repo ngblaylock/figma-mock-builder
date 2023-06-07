@@ -1,59 +1,382 @@
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"
-  integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-  integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+<script>
+(()=>{var Ye=!1,Xe=!1,V=[],Ze=-1;function Bt(e){bn(e)}function bn(e){V.includes(e)||V.push(e),vn()}function ye(e){let t=V.indexOf(e);t!==-1&&t>Ze&&V.splice(t,1)}function vn(){!Xe&&!Ye&&(Ye=!0,queueMicrotask(wn))}function wn(){Ye=!1,Xe=!0;for(let e=0;e<V.length;e++)V[e](),Ze=e;V.length=0,Ze=-1,Xe=!1}var C,P,$,Qe,et=!0;function Kt(e){et=!1,e(),et=!0}function zt(e){C=e.reactive,$=e.release,P=t=>e.effect(t,{scheduler:r=>{et?Bt(r):r()}}),Qe=e.raw}function tt(e){P=e}function Vt(e){let t=()=>{};return[n=>{let i=P(n);return e._x_effects||(e._x_effects=new Set,e._x_runEffects=()=>{e._x_effects.forEach(o=>o())}),e._x_effects.add(i),t=()=>{i!==void 0&&(e._x_effects.delete(i),$(i))},i},()=>{t()}]}var Ht=[],qt=[],Ut=[];function Wt(e){Ut.push(e)}function be(e,t){typeof t=="function"?(e._x_cleanups||(e._x_cleanups=[]),e._x_cleanups.push(t)):(t=e,qt.push(t))}function Gt(e){Ht.push(e)}function Jt(e,t,r){e._x_attributeCleanups||(e._x_attributeCleanups={}),e._x_attributeCleanups[t]||(e._x_attributeCleanups[t]=[]),e._x_attributeCleanups[t].push(r)}function rt(e,t){!e._x_attributeCleanups||Object.entries(e._x_attributeCleanups).forEach(([r,n])=>{(t===void 0||t.includes(r))&&(n.forEach(i=>i()),delete e._x_attributeCleanups[r])})}var it=new MutationObserver(nt),ot=!1;function se(){it.observe(document,{subtree:!0,childList:!0,attributes:!0,attributeOldValue:!0}),ot=!0}function st(){En(),it.disconnect(),ot=!1}var ae=[],at=!1;function En(){ae=ae.concat(it.takeRecords()),ae.length&&!at&&(at=!0,queueMicrotask(()=>{Sn(),at=!1}))}function Sn(){nt(ae),ae.length=0}function h(e){if(!ot)return e();st();let t=e();return se(),t}var ct=!1,ve=[];function Yt(){ct=!0}function Xt(){ct=!1,nt(ve),ve=[]}function nt(e){if(ct){ve=ve.concat(e);return}let t=[],r=[],n=new Map,i=new Map;for(let o=0;o<e.length;o++)if(!e[o].target._x_ignoreMutationObserver&&(e[o].type==="childList"&&(e[o].addedNodes.forEach(s=>s.nodeType===1&&t.push(s)),e[o].removedNodes.forEach(s=>s.nodeType===1&&r.push(s))),e[o].type==="attributes")){let s=e[o].target,a=e[o].attributeName,c=e[o].oldValue,l=()=>{n.has(s)||n.set(s,[]),n.get(s).push({name:a,value:s.getAttribute(a)})},u=()=>{i.has(s)||i.set(s,[]),i.get(s).push(a)};s.hasAttribute(a)&&c===null?l():s.hasAttribute(a)?(u(),l()):u()}i.forEach((o,s)=>{rt(s,o)}),n.forEach((o,s)=>{Ht.forEach(a=>a(s,o))});for(let o of r)if(!t.includes(o)&&(qt.forEach(s=>s(o)),o._x_cleanups))for(;o._x_cleanups.length;)o._x_cleanups.pop()();t.forEach(o=>{o._x_ignoreSelf=!0,o._x_ignore=!0});for(let o of t)r.includes(o)||!o.isConnected||(delete o._x_ignoreSelf,delete o._x_ignore,Ut.forEach(s=>s(o)),o._x_ignore=!0,o._x_ignoreSelf=!0);t.forEach(o=>{delete o._x_ignoreSelf,delete o._x_ignore}),t=null,r=null,n=null,i=null}function we(e){return F(L(e))}function M(e,t,r){return e._x_dataStack=[t,...L(r||e)],()=>{e._x_dataStack=e._x_dataStack.filter(n=>n!==t)}}function L(e){return e._x_dataStack?e._x_dataStack:typeof ShadowRoot=="function"&&e instanceof ShadowRoot?L(e.host):e.parentNode?L(e.parentNode):[]}function F(e){let t=new Proxy({},{ownKeys:()=>Array.from(new Set(e.flatMap(r=>Object.keys(r)))),has:(r,n)=>e.some(i=>i.hasOwnProperty(n)),get:(r,n)=>(e.find(i=>{if(i.hasOwnProperty(n)){let o=Object.getOwnPropertyDescriptor(i,n);if(o.get&&o.get._x_alreadyBound||o.set&&o.set._x_alreadyBound)return!0;if((o.get||o.set)&&o.enumerable){let s=o.get,a=o.set,c=o;s=s&&s.bind(t),a=a&&a.bind(t),s&&(s._x_alreadyBound=!0),a&&(a._x_alreadyBound=!0),Object.defineProperty(i,n,{...c,get:s,set:a})}return!0}return!1})||{})[n],set:(r,n,i)=>{let o=e.find(s=>s.hasOwnProperty(n));return o?o[n]=i:e[e.length-1][n]=i,!0}});return t}function Ee(e){let t=n=>typeof n=="object"&&!Array.isArray(n)&&n!==null,r=(n,i="")=>{Object.entries(Object.getOwnPropertyDescriptors(n)).forEach(([o,{value:s,enumerable:a}])=>{if(a===!1||s===void 0)return;let c=i===""?o:`${i}.${o}`;typeof s=="object"&&s!==null&&s._x_interceptor?n[o]=s.initialize(e,c,o):t(s)&&s!==n&&!(s instanceof Element)&&r(s,c)})};return r(e)}function Se(e,t=()=>{}){let r={initialValue:void 0,_x_interceptor:!0,initialize(n,i,o){return e(this.initialValue,()=>An(n,i),s=>lt(n,i,s),i,o)}};return t(r),n=>{if(typeof n=="object"&&n!==null&&n._x_interceptor){let i=r.initialize.bind(r);r.initialize=(o,s,a)=>{let c=n.initialize(o,s,a);return r.initialValue=c,i(o,s,a)}}else r.initialValue=n;return r}}function An(e,t){return t.split(".").reduce((r,n)=>r[n],e)}function lt(e,t,r){if(typeof t=="string"&&(t=t.split(".")),t.length===1)e[t[0]]=r;else{if(t.length===0)throw error;return e[t[0]]||(e[t[0]]={}),lt(e[t[0]],t.slice(1),r)}}var Zt={};function y(e,t){Zt[e]=t}function ce(e,t){return Object.entries(Zt).forEach(([r,n])=>{let i=null;function o(){if(i)return i;{let[s,a]=ut(t);return i={interceptor:Se,...s},be(t,a),i}}Object.defineProperty(e,`$${r}`,{get(){return n(t,o())},enumerable:!1})}),e}function Qt(e,t,r,...n){try{return r(...n)}catch(i){X(i,e,t)}}function X(e,t,r=void 0){Object.assign(e,{el:t,expression:r}),console.warn(`Alpine Expression Error: ${e.message}
 
+${r?'Expression: "'+r+`"
+
+`:""}`,t),setTimeout(()=>{throw e},0)}var Ae=!0;function er(e){let t=Ae;Ae=!1,e(),Ae=t}function D(e,t,r={}){let n;return x(e,t)(i=>n=i,r),n}function x(...e){return tr(...e)}var tr=ft;function rr(e){tr=e}function ft(e,t){let r={};ce(r,e);let n=[r,...L(e)],i=typeof t=="function"?On(n,t):Tn(n,t,e);return Qt.bind(null,e,t,i)}function On(e,t){return(r=()=>{},{scope:n={},params:i=[]}={})=>{let o=t.apply(F([n,...e]),i);Oe(r,o)}}var dt={};function Cn(e,t){if(dt[e])return dt[e];let r=Object.getPrototypeOf(async function(){}).constructor,n=/^[\n\s]*if.*\(.*\)/.test(e)||/^(let|const)\s/.test(e)?`(async()=>{ ${e} })()`:e,o=(()=>{try{return new r(["__self","scope"],`with (scope) { __self.result = ${n} }; __self.finished = true; return __self.result;`)}catch(s){return X(s,t,e),Promise.resolve()}})();return dt[e]=o,o}function Tn(e,t,r){let n=Cn(t,r);return(i=()=>{},{scope:o={},params:s=[]}={})=>{n.result=void 0,n.finished=!1;let a=F([o,...e]);if(typeof n=="function"){let c=n(n,a).catch(l=>X(l,r,t));n.finished?(Oe(i,n.result,a,s,r),n.result=void 0):c.then(l=>{Oe(i,l,a,s,r)}).catch(l=>X(l,r,t)).finally(()=>n.result=void 0)}}}function Oe(e,t,r,n,i){if(Ae&&typeof t=="function"){let o=t.apply(r,n);o instanceof Promise?o.then(s=>Oe(e,s,r,n)).catch(s=>X(s,i,t)):e(o)}else typeof t=="object"&&t instanceof Promise?t.then(o=>e(o)):e(t)}var pt="x-";function O(e=""){return pt+e}function nr(e){pt=e}var mt={};function p(e,t){return mt[e]=t,{before(r){if(!mt[r]){console.warn("Cannot find directive `${directive}`. `${name}` will use the default order of execution");return}let n=H.indexOf(r);H.splice(n>=0?n:H.indexOf("DEFAULT"),0,e)}}}function le(e,t,r){if(t=Array.from(t),e._x_virtualDirectives){let o=Object.entries(e._x_virtualDirectives).map(([a,c])=>({name:a,value:c})),s=ht(o);o=o.map(a=>s.find(c=>c.name===a.name)?{name:`x-bind:${a.name}`,value:`"${a.value}"`}:a),t=t.concat(o)}let n={};return t.map(ir((o,s)=>n[o]=s)).filter(or).map(Mn(n,r)).sort(Nn).map(o=>Rn(e,o))}function ht(e){return Array.from(e).map(ir()).filter(t=>!or(t))}var _t=!1,ue=new Map,sr=Symbol();function ar(e){_t=!0;let t=Symbol();sr=t,ue.set(t,[]);let r=()=>{for(;ue.get(t).length;)ue.get(t).shift()();ue.delete(t)},n=()=>{_t=!1,r()};e(r),n()}function ut(e){let t=[],r=a=>t.push(a),[n,i]=Vt(e);return t.push(i),[{Alpine:j,effect:n,cleanup:r,evaluateLater:x.bind(x,e),evaluate:D.bind(D,e)},()=>t.forEach(a=>a())]}function Rn(e,t){let r=()=>{},n=mt[t.type]||r,[i,o]=ut(e);Jt(e,t.original,o);let s=()=>{e._x_ignore||e._x_ignoreSelf||(n.inline&&n.inline(e,t,i),n=n.bind(n,e,t,i),_t?ue.get(sr).push(n):n())};return s.runCleanups=o,s}var Te=(e,t)=>({name:r,value:n})=>(r.startsWith(e)&&(r=r.replace(e,t)),{name:r,value:n}),Ce=e=>e;function ir(e=()=>{}){return({name:t,value:r})=>{let{name:n,value:i}=cr.reduce((o,s)=>s(o),{name:t,value:r});return n!==t&&e(n,t),{name:n,value:i}}}var cr=[];function Z(e){cr.push(e)}function or({name:e}){return lr().test(e)}var lr=()=>new RegExp(`^${pt}([^:^.]+)\\b`);function Mn(e,t){return({name:r,value:n})=>{let i=r.match(lr()),o=r.match(/:([a-zA-Z0-9\-:]+)/),s=r.match(/\.[^.\]]+(?=[^\]]*$)/g)||[],a=t||e[r]||r;return{type:i?i[1]:null,value:o?o[1]:null,modifiers:s.map(c=>c.replace(".","")),expression:n,original:a}}}var gt="DEFAULT",H=["ignore","ref","data","id","bind","init","for","model","modelable","transition","show","if",gt,"teleport"];function Nn(e,t){let r=H.indexOf(e.type)===-1?gt:e.type,n=H.indexOf(t.type)===-1?gt:t.type;return H.indexOf(r)-H.indexOf(n)}function q(e,t,r={}){e.dispatchEvent(new CustomEvent(t,{detail:r,bubbles:!0,composed:!0,cancelable:!0}))}function T(e,t){if(typeof ShadowRoot=="function"&&e instanceof ShadowRoot){Array.from(e.children).forEach(i=>T(i,t));return}let r=!1;if(t(e,()=>r=!0),r)return;let n=e.firstElementChild;for(;n;)T(n,t,!1),n=n.nextElementSibling}function S(e,...t){console.warn(`Alpine Warning: ${e}`,...t)}var ur=!1;function dr(){ur&&S("Alpine has already been initialized on this page. Calling Alpine.start() more than once can cause problems."),ur=!0,document.body||S("Unable to initialize. Trying to load Alpine before `<body>` is available. Did you forget to add `defer` in Alpine's `<script>` tag?"),q(document,"alpine:init"),q(document,"alpine:initializing"),se(),Wt(t=>E(t,T)),be(t=>xt(t)),Gt((t,r)=>{le(t,r).forEach(n=>n())});let e=t=>!U(t.parentElement,!0);Array.from(document.querySelectorAll(fr())).filter(e).forEach(t=>{E(t)}),q(document,"alpine:initialized")}var yt=[],pr=[];function mr(){return yt.map(e=>e())}function fr(){return yt.concat(pr).map(e=>e())}function Re(e){yt.push(e)}function Me(e){pr.push(e)}function U(e,t=!1){return Q(e,r=>{if((t?fr():mr()).some(i=>r.matches(i)))return!0})}function Q(e,t){if(!!e){if(t(e))return e;if(e._x_teleportBack&&(e=e._x_teleportBack),!!e.parentElement)return Q(e.parentElement,t)}}function hr(e){return mr().some(t=>e.matches(t))}var _r=[];function gr(e){_r.push(e)}function E(e,t=T,r=()=>{}){ar(()=>{t(e,(n,i)=>{r(n,i),_r.forEach(o=>o(n,i)),le(n,n.attributes).forEach(o=>o()),n._x_ignore&&i()})})}function xt(e){T(e,t=>rt(t))}var bt=[],vt=!1;function ee(e=()=>{}){return queueMicrotask(()=>{vt||setTimeout(()=>{Ne()})}),new Promise(t=>{bt.push(()=>{e(),t()})})}function Ne(){for(vt=!1;bt.length;)bt.shift()()}function xr(){vt=!0}function fe(e,t){return Array.isArray(t)?yr(e,t.join(" ")):typeof t=="object"&&t!==null?In(e,t):typeof t=="function"?fe(e,t()):yr(e,t)}function yr(e,t){let r=o=>o.split(" ").filter(Boolean),n=o=>o.split(" ").filter(s=>!e.classList.contains(s)).filter(Boolean),i=o=>(e.classList.add(...o),()=>{e.classList.remove(...o)});return t=t===!0?t="":t||"",i(n(t))}function In(e,t){let r=a=>a.split(" ").filter(Boolean),n=Object.entries(t).flatMap(([a,c])=>c?r(a):!1).filter(Boolean),i=Object.entries(t).flatMap(([a,c])=>c?!1:r(a)).filter(Boolean),o=[],s=[];return i.forEach(a=>{e.classList.contains(a)&&(e.classList.remove(a),s.push(a))}),n.forEach(a=>{e.classList.contains(a)||(e.classList.add(a),o.push(a))}),()=>{s.forEach(a=>e.classList.add(a)),o.forEach(a=>e.classList.remove(a))}}function W(e,t){return typeof t=="object"&&t!==null?Pn(e,t):Dn(e,t)}function Pn(e,t){let r={};return Object.entries(t).forEach(([n,i])=>{r[n]=e.style[n],n.startsWith("--")||(n=kn(n)),e.style.setProperty(n,i)}),setTimeout(()=>{e.style.length===0&&e.removeAttribute("style")}),()=>{W(e,r)}}function Dn(e,t){let r=e.getAttribute("style",t);return e.setAttribute("style",t),()=>{e.setAttribute("style",r||"")}}function kn(e){return e.replace(/([a-z])([A-Z])/g,"$1-$2").toLowerCase()}function de(e,t=()=>{}){let r=!1;return function(){r?t.apply(this,arguments):(r=!0,e.apply(this,arguments))}}p("transition",(e,{value:t,modifiers:r,expression:n},{evaluate:i})=>{typeof n=="function"&&(n=i(n)),n!==!1&&(!n||typeof n=="boolean"?Ln(e,r,t):$n(e,n,t))});function $n(e,t,r){br(e,fe,""),{enter:i=>{e._x_transition.enter.during=i},"enter-start":i=>{e._x_transition.enter.start=i},"enter-end":i=>{e._x_transition.enter.end=i},leave:i=>{e._x_transition.leave.during=i},"leave-start":i=>{e._x_transition.leave.start=i},"leave-end":i=>{e._x_transition.leave.end=i}}[r](t)}function Ln(e,t,r){br(e,W);let n=!t.includes("in")&&!t.includes("out")&&!r,i=n||t.includes("in")||["enter"].includes(r),o=n||t.includes("out")||["leave"].includes(r);t.includes("in")&&!n&&(t=t.filter((_,b)=>b<t.indexOf("out"))),t.includes("out")&&!n&&(t=t.filter((_,b)=>b>t.indexOf("out")));let s=!t.includes("opacity")&&!t.includes("scale"),a=s||t.includes("opacity"),c=s||t.includes("scale"),l=a?0:1,u=c?pe(t,"scale",95)/100:1,d=pe(t,"delay",0)/1e3,m=pe(t,"origin","center"),v="opacity, transform",k=pe(t,"duration",150)/1e3,xe=pe(t,"duration",75)/1e3,f="cubic-bezier(0.4, 0.0, 0.2, 1)";i&&(e._x_transition.enter.during={transformOrigin:m,transitionDelay:`${d}s`,transitionProperty:v,transitionDuration:`${k}s`,transitionTimingFunction:f},e._x_transition.enter.start={opacity:l,transform:`scale(${u})`},e._x_transition.enter.end={opacity:1,transform:"scale(1)"}),o&&(e._x_transition.leave.during={transformOrigin:m,transitionDelay:`${d}s`,transitionProperty:v,transitionDuration:`${xe}s`,transitionTimingFunction:f},e._x_transition.leave.start={opacity:1,transform:"scale(1)"},e._x_transition.leave.end={opacity:l,transform:`scale(${u})`})}function br(e,t,r={}){e._x_transition||(e._x_transition={enter:{during:r,start:r,end:r},leave:{during:r,start:r,end:r},in(n=()=>{},i=()=>{}){Ie(e,t,{during:this.enter.during,start:this.enter.start,end:this.enter.end},n,i)},out(n=()=>{},i=()=>{}){Ie(e,t,{during:this.leave.during,start:this.leave.start,end:this.leave.end},n,i)}})}window.Element.prototype._x_toggleAndCascadeWithTransitions=function(e,t,r,n){let i=document.visibilityState==="visible"?requestAnimationFrame:setTimeout,o=()=>i(r);if(t){e._x_transition&&(e._x_transition.enter||e._x_transition.leave)?e._x_transition.enter&&(Object.entries(e._x_transition.enter.during).length||Object.entries(e._x_transition.enter.start).length||Object.entries(e._x_transition.enter.end).length)?e._x_transition.in(r):o():e._x_transition?e._x_transition.in(r):o();return}e._x_hidePromise=e._x_transition?new Promise((s,a)=>{e._x_transition.out(()=>{},()=>s(n)),e._x_transitioning.beforeCancel(()=>a({isFromCancelledTransition:!0}))}):Promise.resolve(n),queueMicrotask(()=>{let s=vr(e);s?(s._x_hideChildren||(s._x_hideChildren=[]),s._x_hideChildren.push(e)):i(()=>{let a=c=>{let l=Promise.all([c._x_hidePromise,...(c._x_hideChildren||[]).map(a)]).then(([u])=>u());return delete c._x_hidePromise,delete c._x_hideChildren,l};a(e).catch(c=>{if(!c.isFromCancelledTransition)throw c})})})};function vr(e){let t=e.parentNode;if(!!t)return t._x_hidePromise?t:vr(t)}function Ie(e,t,{during:r,start:n,end:i}={},o=()=>{},s=()=>{}){if(e._x_transitioning&&e._x_transitioning.cancel(),Object.keys(r).length===0&&Object.keys(n).length===0&&Object.keys(i).length===0){o(),s();return}let a,c,l;Fn(e,{start(){a=t(e,n)},during(){c=t(e,r)},before:o,end(){a(),l=t(e,i)},after:s,cleanup(){c(),l()}})}function Fn(e,t){let r,n,i,o=de(()=>{h(()=>{r=!0,n||t.before(),i||(t.end(),Ne()),t.after(),e.isConnected&&t.cleanup(),delete e._x_transitioning})});e._x_transitioning={beforeCancels:[],beforeCancel(s){this.beforeCancels.push(s)},cancel:de(function(){for(;this.beforeCancels.length;)this.beforeCancels.shift()();o()}),finish:o},h(()=>{t.start(),t.during()}),xr(),requestAnimationFrame(()=>{if(r)return;let s=Number(getComputedStyle(e).transitionDuration.replace(/,.*/,"").replace("s",""))*1e3,a=Number(getComputedStyle(e).transitionDelay.replace(/,.*/,"").replace("s",""))*1e3;s===0&&(s=Number(getComputedStyle(e).animationDuration.replace("s",""))*1e3),h(()=>{t.before()}),n=!0,requestAnimationFrame(()=>{r||(h(()=>{t.end()}),Ne(),setTimeout(e._x_transitioning.finish,s+a),i=!0)})})}function pe(e,t,r){if(e.indexOf(t)===-1)return r;let n=e[e.indexOf(t)+1];if(!n||t==="scale"&&isNaN(n))return r;if(t==="duration"||t==="delay"){let i=n.match(/([0-9]+)ms/);if(i)return i[1]}return t==="origin"&&["top","right","left","center","bottom"].includes(e[e.indexOf(t)+2])?[n,e[e.indexOf(t)+2]].join(" "):n}var te=!1;function N(e,t=()=>{}){return(...r)=>te?t(...r):e(...r)}function wr(e){return(...t)=>te&&e(...t)}function Er(e,t){t._x_dataStack||(t._x_dataStack=e._x_dataStack),te=!0,Bn(()=>{jn(t)}),te=!1}function jn(e){let t=!1;E(e,(n,i)=>{T(n,(o,s)=>{if(t&&hr(o))return s();t=!0,i(o,s)})})}function Bn(e){let t=P;tt((r,n)=>{let i=t(r);return $(i),()=>{}}),e(),tt(t)}function me(e,t,r,n=[]){switch(e._x_bindings||(e._x_bindings=C({})),e._x_bindings[t]=r,t=n.includes("camel")?qn(t):t,t){case"value":Kn(e,r);break;case"style":Vn(e,r);break;case"class":zn(e,r);break;case"selected":case"checked":Hn(e,t,r);break;default:Sr(e,t,r);break}}function Kn(e,t){if(e.type==="radio")e.attributes.value===void 0&&(e.value=t),window.fromModel&&(e.checked=Ar(e.value,t));else if(e.type==="checkbox")Number.isInteger(t)?e.value=t:!Number.isInteger(t)&&!Array.isArray(t)&&typeof t!="boolean"&&![null,void 0].includes(t)?e.value=String(t):Array.isArray(t)?e.checked=t.some(r=>Ar(r,e.value)):e.checked=!!t;else if(e.tagName==="SELECT")Un(e,t);else{if(e.value===t)return;e.value=t}}function zn(e,t){e._x_undoAddedClasses&&e._x_undoAddedClasses(),e._x_undoAddedClasses=fe(e,t)}function Vn(e,t){e._x_undoAddedStyles&&e._x_undoAddedStyles(),e._x_undoAddedStyles=W(e,t)}function Hn(e,t,r){Sr(e,t,r),Wn(e,t,r)}function Sr(e,t,r){[null,void 0,!1].includes(r)&&Jn(t)?e.removeAttribute(t):(Or(t)&&(r=t),Gn(e,t,r))}function Gn(e,t,r){e.getAttribute(t)!=r&&e.setAttribute(t,r)}function Wn(e,t,r){e[t]!==r&&(e[t]=r)}function Un(e,t){let r=[].concat(t).map(n=>n+"");Array.from(e.options).forEach(n=>{n.selected=r.includes(n.value)})}function qn(e){return e.toLowerCase().replace(/-(\w)/g,(t,r)=>r.toUpperCase())}function Ar(e,t){return e==t}function Or(e){return["disabled","checked","required","readonly","hidden","open","selected","autofocus","itemscope","multiple","novalidate","allowfullscreen","allowpaymentrequest","formnovalidate","autoplay","controls","loop","muted","playsinline","default","ismap","reversed","async","defer","nomodule"].includes(e)}function Jn(e){return!["aria-pressed","aria-checked","aria-expanded","aria-selected"].includes(e)}function Tr(e,t,r){if(e._x_bindings&&e._x_bindings[t]!==void 0)return e._x_bindings[t];let n=e.getAttribute(t);return n===null?typeof r=="function"?r():r:n===""?!0:Or(t)?!![t,"true"].includes(n):n}function Pe(e,t){var r;return function(){var n=this,i=arguments,o=function(){r=null,e.apply(n,i)};clearTimeout(r),r=setTimeout(o,t)}}function De(e,t){let r;return function(){let n=this,i=arguments;r||(e.apply(n,i),r=!0,setTimeout(()=>r=!1,t))}}function Cr(e){(Array.isArray(e)?e:[e]).forEach(r=>r(j))}var G={},Rr=!1;function Mr(e,t){if(Rr||(G=C(G),Rr=!0),t===void 0)return G[e];G[e]=t,typeof t=="object"&&t!==null&&t.hasOwnProperty("init")&&typeof t.init=="function"&&G[e].init(),Ee(G[e])}function Nr(){return G}var Ir={};function Pr(e,t){let r=typeof t!="function"?()=>t:t;e instanceof Element?wt(e,r()):Ir[e]=r}function Dr(e){return Object.entries(Ir).forEach(([t,r])=>{Object.defineProperty(e,t,{get(){return(...n)=>r(...n)}})}),e}function wt(e,t,r){let n=[];for(;n.length;)n.pop()();let i=Object.entries(t).map(([s,a])=>({name:s,value:a})),o=ht(i);i=i.map(s=>o.find(a=>a.name===s.name)?{name:`x-bind:${s.name}`,value:`"${s.value}"`}:s),le(e,i,r).map(s=>{n.push(s.runCleanups),s()})}var kr={};function $r(e,t){kr[e]=t}function Lr(e,t){return Object.entries(kr).forEach(([r,n])=>{Object.defineProperty(e,r,{get(){return(...i)=>n.bind(t)(...i)},enumerable:!1})}),e}var Yn={get reactive(){return C},get release(){return $},get effect(){return P},get raw(){return Qe},version:"3.12.2",flushAndStopDeferringMutations:Xt,dontAutoEvaluateFunctions:er,disableEffectScheduling:Kt,startObservingMutations:se,stopObservingMutations:st,setReactivityEngine:zt,closestDataStack:L,skipDuringClone:N,onlyDuringClone:wr,addRootSelector:Re,addInitSelector:Me,addScopeToNode:M,deferMutations:Yt,mapAttributes:Z,evaluateLater:x,interceptInit:gr,setEvaluator:rr,mergeProxies:F,findClosest:Q,closestRoot:U,destroyTree:xt,interceptor:Se,transition:Ie,setStyles:W,mutateDom:h,directive:p,throttle:De,debounce:Pe,evaluate:D,initTree:E,nextTick:ee,prefixed:O,prefix:nr,plugin:Cr,magic:y,store:Mr,start:dr,clone:Er,bound:Tr,$data:we,walk:T,data:$r,bind:Pr},j=Yn;function Et(e,t){let r=Object.create(null),n=e.split(",");for(let i=0;i<n.length;i++)r[n[i]]=!0;return t?i=>!!r[i.toLowerCase()]:i=>!!r[i]}var hs={[1]:"TEXT",[2]:"CLASS",[4]:"STYLE",[8]:"PROPS",[16]:"FULL_PROPS",[32]:"HYDRATE_EVENTS",[64]:"STABLE_FRAGMENT",[128]:"KEYED_FRAGMENT",[256]:"UNKEYED_FRAGMENT",[512]:"NEED_PATCH",[1024]:"DYNAMIC_SLOTS",[2048]:"DEV_ROOT_FRAGMENT",[-1]:"HOISTED",[-2]:"BAIL"},_s={[1]:"STABLE",[2]:"DYNAMIC",[3]:"FORWARDED"};var Xn="itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly";var gs=Et(Xn+",async,autofocus,autoplay,controls,default,defer,disabled,hidden,loop,open,required,reversed,scoped,seamless,checked,muted,multiple,selected");var Fr=Object.freeze({}),xs=Object.freeze([]);var St=Object.assign;var Zn=Object.prototype.hasOwnProperty,he=(e,t)=>Zn.call(e,t),B=Array.isArray,re=e=>jr(e)==="[object Map]";var Qn=e=>typeof e=="string",ke=e=>typeof e=="symbol",_e=e=>e!==null&&typeof e=="object";var ei=Object.prototype.toString,jr=e=>ei.call(e),At=e=>jr(e).slice(8,-1);var $e=e=>Qn(e)&&e!=="NaN"&&e[0]!=="-"&&""+parseInt(e,10)===e;var Le=e=>{let t=Object.create(null);return r=>t[r]||(t[r]=e(r))},ti=/-(\w)/g,ys=Le(e=>e.replace(ti,(t,r)=>r?r.toUpperCase():"")),ri=/\B([A-Z])/g,bs=Le(e=>e.replace(ri,"-$1").toLowerCase()),Ot=Le(e=>e.charAt(0).toUpperCase()+e.slice(1)),vs=Le(e=>e?`on${Ot(e)}`:""),Tt=(e,t)=>e!==t&&(e===e||t===t);var Ct=new WeakMap,ge=[],I,J=Symbol("iterate"),Rt=Symbol("Map key iterate");function ni(e){return e&&e._isEffect===!0}function Br(e,t=Fr){ni(e)&&(e=e.raw);let r=ii(e,t);return t.lazy||r(),r}function zr(e){e.active&&(Kr(e),e.options.onStop&&e.options.onStop(),e.active=!1)}var oi=0;function ii(e,t){let r=function(){if(!r.active)return e();if(!ge.includes(r)){Kr(r);try{return si(),ge.push(r),I=r,e()}finally{ge.pop(),Vr(),I=ge[ge.length-1]}}};return r.id=oi++,r.allowRecurse=!!t.allowRecurse,r._isEffect=!0,r.active=!0,r.raw=e,r.deps=[],r.options=t,r}function Kr(e){let{deps:t}=e;if(t.length){for(let r=0;r<t.length;r++)t[r].delete(e);t.length=0}}var ne=!0,Mt=[];function ai(){Mt.push(ne),ne=!1}function si(){Mt.push(ne),ne=!0}function Vr(){let e=Mt.pop();ne=e===void 0?!0:e}function R(e,t,r){if(!ne||I===void 0)return;let n=Ct.get(e);n||Ct.set(e,n=new Map);let i=n.get(r);i||n.set(r,i=new Set),i.has(I)||(i.add(I),I.deps.push(i),I.options.onTrack&&I.options.onTrack({effect:I,target:e,type:t,key:r}))}function K(e,t,r,n,i,o){let s=Ct.get(e);if(!s)return;let a=new Set,c=u=>{u&&u.forEach(d=>{(d!==I||d.allowRecurse)&&a.add(d)})};if(t==="clear")s.forEach(c);else if(r==="length"&&B(e))s.forEach((u,d)=>{(d==="length"||d>=n)&&c(u)});else switch(r!==void 0&&c(s.get(r)),t){case"add":B(e)?$e(r)&&c(s.get("length")):(c(s.get(J)),re(e)&&c(s.get(Rt)));break;case"delete":B(e)||(c(s.get(J)),re(e)&&c(s.get(Rt)));break;case"set":re(e)&&c(s.get(J));break}let l=u=>{u.options.onTrigger&&u.options.onTrigger({effect:u,target:e,key:r,type:t,newValue:n,oldValue:i,oldTarget:o}),u.options.scheduler?u.options.scheduler(u):u()};a.forEach(l)}var ci=Et("__proto__,__v_isRef,__isVue"),Hr=new Set(Object.getOwnPropertyNames(Symbol).map(e=>Symbol[e]).filter(ke)),li=Fe(),ui=Fe(!1,!0),fi=Fe(!0),di=Fe(!0,!0),je={};["includes","indexOf","lastIndexOf"].forEach(e=>{let t=Array.prototype[e];je[e]=function(...r){let n=g(this);for(let o=0,s=this.length;o<s;o++)R(n,"get",o+"");let i=t.apply(n,r);return i===-1||i===!1?t.apply(n,r.map(g)):i}});["push","pop","shift","unshift","splice"].forEach(e=>{let t=Array.prototype[e];je[e]=function(...r){ai();let n=t.apply(this,r);return Vr(),n}});function Fe(e=!1,t=!1){return function(n,i,o){if(i==="__v_isReactive")return!e;if(i==="__v_isReadonly")return e;if(i==="__v_raw"&&o===(e?t?mi:Ur:t?pi:qr).get(n))return n;let s=B(n);if(!e&&s&&he(je,i))return Reflect.get(je,i,o);let a=Reflect.get(n,i,o);return(ke(i)?Hr.has(i):ci(i))||(e||R(n,"get",i),t)?a:Nt(a)?!s||!$e(i)?a.value:a:_e(a)?e?Wr(a):Be(a):a}}var hi=Gr(),_i=Gr(!0);function Gr(e=!1){return function(r,n,i,o){let s=r[n];if(!e&&(i=g(i),s=g(s),!B(r)&&Nt(s)&&!Nt(i)))return s.value=i,!0;let a=B(r)&&$e(n)?Number(n)<r.length:he(r,n),c=Reflect.set(r,n,i,o);return r===g(o)&&(a?Tt(i,s)&&K(r,"set",n,i,s):K(r,"add",n,i)),c}}function gi(e,t){let r=he(e,t),n=e[t],i=Reflect.deleteProperty(e,t);return i&&r&&K(e,"delete",t,void 0,n),i}function xi(e,t){let r=Reflect.has(e,t);return(!ke(t)||!Hr.has(t))&&R(e,"has",t),r}function yi(e){return R(e,"iterate",B(e)?"length":J),Reflect.ownKeys(e)}var Jr={get:li,set:hi,deleteProperty:gi,has:xi,ownKeys:yi},Yr={get:fi,set(e,t){return console.warn(`Set operation on key "${String(t)}" failed: target is readonly.`,e),!0},deleteProperty(e,t){return console.warn(`Delete operation on key "${String(t)}" failed: target is readonly.`,e),!0}},Ts=St({},Jr,{get:ui,set:_i}),Cs=St({},Yr,{get:di}),It=e=>_e(e)?Be(e):e,Pt=e=>_e(e)?Wr(e):e,Dt=e=>e,Ke=e=>Reflect.getPrototypeOf(e);function ze(e,t,r=!1,n=!1){e=e.__v_raw;let i=g(e),o=g(t);t!==o&&!r&&R(i,"get",t),!r&&R(i,"get",o);let{has:s}=Ke(i),a=n?Dt:r?Pt:It;if(s.call(i,t))return a(e.get(t));if(s.call(i,o))return a(e.get(o));e!==i&&e.get(t)}function Ve(e,t=!1){let r=this.__v_raw,n=g(r),i=g(e);return e!==i&&!t&&R(n,"has",e),!t&&R(n,"has",i),e===i?r.has(e):r.has(e)||r.has(i)}function He(e,t=!1){return e=e.__v_raw,!t&&R(g(e),"iterate",J),Reflect.get(e,"size",e)}function Xr(e){e=g(e);let t=g(this);return Ke(t).has.call(t,e)||(t.add(e),K(t,"add",e,e)),this}function Qr(e,t){t=g(t);let r=g(this),{has:n,get:i}=Ke(r),o=n.call(r,e);o?Zr(r,n,e):(e=g(e),o=n.call(r,e));let s=i.call(r,e);return r.set(e,t),o?Tt(t,s)&&K(r,"set",e,t,s):K(r,"add",e,t),this}function en(e){let t=g(this),{has:r,get:n}=Ke(t),i=r.call(t,e);i?Zr(t,r,e):(e=g(e),i=r.call(t,e));let o=n?n.call(t,e):void 0,s=t.delete(e);return i&&K(t,"delete",e,void 0,o),s}function tn(){let e=g(this),t=e.size!==0,r=re(e)?new Map(e):new Set(e),n=e.clear();return t&&K(e,"clear",void 0,void 0,r),n}function qe(e,t){return function(n,i){let o=this,s=o.__v_raw,a=g(s),c=t?Dt:e?Pt:It;return!e&&R(a,"iterate",J),s.forEach((l,u)=>n.call(i,c(l),c(u),o))}}function Ue(e,t,r){return function(...n){let i=this.__v_raw,o=g(i),s=re(o),a=e==="entries"||e===Symbol.iterator&&s,c=e==="keys"&&s,l=i[e](...n),u=r?Dt:t?Pt:It;return!t&&R(o,"iterate",c?Rt:J),{next(){let{value:d,done:m}=l.next();return m?{value:d,done:m}:{value:a?[u(d[0]),u(d[1])]:u(d),done:m}},[Symbol.iterator](){return this}}}}function z(e){return function(...t){{let r=t[0]?`on key "${t[0]}" `:"";console.warn(`${Ot(e)} operation ${r}failed: target is readonly.`,g(this))}return e==="delete"?!1:this}}var rn={get(e){return ze(this,e)},get size(){return He(this)},has:Ve,add:Xr,set:Qr,delete:en,clear:tn,forEach:qe(!1,!1)},nn={get(e){return ze(this,e,!1,!0)},get size(){return He(this)},has:Ve,add:Xr,set:Qr,delete:en,clear:tn,forEach:qe(!1,!0)},on={get(e){return ze(this,e,!0)},get size(){return He(this,!0)},has(e){return Ve.call(this,e,!0)},add:z("add"),set:z("set"),delete:z("delete"),clear:z("clear"),forEach:qe(!0,!1)},sn={get(e){return ze(this,e,!0,!0)},get size(){return He(this,!0)},has(e){return Ve.call(this,e,!0)},add:z("add"),set:z("set"),delete:z("delete"),clear:z("clear"),forEach:qe(!0,!0)},bi=["keys","values","entries",Symbol.iterator];bi.forEach(e=>{rn[e]=Ue(e,!1,!1),on[e]=Ue(e,!0,!1),nn[e]=Ue(e,!1,!0),sn[e]=Ue(e,!0,!0)});function We(e,t){let r=t?e?sn:nn:e?on:rn;return(n,i,o)=>i==="__v_isReactive"?!e:i==="__v_isReadonly"?e:i==="__v_raw"?n:Reflect.get(he(r,i)&&i in n?r:n,i,o)}var vi={get:We(!1,!1)},Rs={get:We(!1,!0)},wi={get:We(!0,!1)},Ms={get:We(!0,!0)};function Zr(e,t,r){let n=g(r);if(n!==r&&t.call(e,n)){let i=At(e);console.warn(`Reactive ${i} contains both the raw and reactive versions of the same object${i==="Map"?" as keys":""}, which can lead to inconsistencies. Avoid differentiating between the raw and reactive versions of an object and only use the reactive version if possible.`)}}var qr=new WeakMap,pi=new WeakMap,Ur=new WeakMap,mi=new WeakMap;function Ei(e){switch(e){case"Object":case"Array":return 1;case"Map":case"Set":case"WeakMap":case"WeakSet":return 2;default:return 0}}function Si(e){return e.__v_skip||!Object.isExtensible(e)?0:Ei(At(e))}function Be(e){return e&&e.__v_isReadonly?e:an(e,!1,Jr,vi,qr)}function Wr(e){return an(e,!0,Yr,wi,Ur)}function an(e,t,r,n,i){if(!_e(e))return console.warn(`value cannot be made reactive: ${String(e)}`),e;if(e.__v_raw&&!(t&&e.__v_isReactive))return e;let o=i.get(e);if(o)return o;let s=Si(e);if(s===0)return e;let a=new Proxy(e,s===2?n:r);return i.set(e,a),a}function g(e){return e&&g(e.__v_raw)||e}function Nt(e){return Boolean(e&&e.__v_isRef===!0)}y("nextTick",()=>ee);y("dispatch",e=>q.bind(q,e));y("watch",(e,{evaluateLater:t,effect:r})=>(n,i)=>{let o=t(n),s=!0,a,c=r(()=>o(l=>{JSON.stringify(l),s?a=l:queueMicrotask(()=>{i(l,a),a=l}),s=!1}));e._x_effects.delete(c)});y("store",Nr);y("data",e=>we(e));y("root",e=>U(e));y("refs",e=>(e._x_refs_proxy||(e._x_refs_proxy=F(Ai(e))),e._x_refs_proxy));function Ai(e){let t=[],r=e;for(;r;)r._x_refs&&t.push(r._x_refs),r=r.parentNode;return t}var kt={};function $t(e){return kt[e]||(kt[e]=0),++kt[e]}function cn(e,t){return Q(e,r=>{if(r._x_ids&&r._x_ids[t])return!0})}function ln(e,t){e._x_ids||(e._x_ids={}),e._x_ids[t]||(e._x_ids[t]=$t(t))}y("id",e=>(t,r=null)=>{let n=cn(e,t),i=n?n._x_ids[t]:$t(t);return r?`${t}-${i}-${r}`:`${t}-${i}`});y("el",e=>e);un("Focus","focus","focus");un("Persist","persist","persist");function un(e,t,r){y(t,n=>S(`You can't use [$${directiveName}] without first installing the "${e}" plugin here: https://alpinejs.dev/plugins/${r}`,n))}function fn({get:e,set:t},{get:r,set:n}){let i=!0,o,s,a,c,l=P(()=>{let u,d;i?(u=e(),n(u),d=r(),i=!1):(u=e(),d=r(),a=JSON.stringify(u),c=JSON.stringify(d),a!==o?(d=r(),n(u),d=u):(t(d),u=d)),o=JSON.stringify(u),s=JSON.stringify(d)});return()=>{$(l)}}p("modelable",(e,{expression:t},{effect:r,evaluateLater:n,cleanup:i})=>{let o=n(t),s=()=>{let u;return o(d=>u=d),u},a=n(`${t} = __placeholder`),c=u=>a(()=>{},{scope:{__placeholder:u}}),l=s();c(l),queueMicrotask(()=>{if(!e._x_model)return;e._x_removeModelListeners.default();let u=e._x_model.get,d=e._x_model.set,m=fn({get(){return u()},set(v){d(v)}},{get(){return s()},set(v){c(v)}});i(m)})});var Oi=document.createElement("div");p("teleport",(e,{modifiers:t,expression:r},{cleanup:n})=>{e.tagName.toLowerCase()!=="template"&&S("x-teleport can only be used on a <template> tag",e);let i=N(()=>document.querySelector(r),()=>Oi)();i||S(`Cannot find x-teleport element for selector: "${r}"`);let o=e.content.cloneNode(!0).firstElementChild;e._x_teleport=o,o._x_teleportBack=e,e._x_forwardEvents&&e._x_forwardEvents.forEach(s=>{o.addEventListener(s,a=>{a.stopPropagation(),e.dispatchEvent(new a.constructor(a.type,a))})}),M(o,{},e),h(()=>{t.includes("prepend")?i.parentNode.insertBefore(o,i):t.includes("append")?i.parentNode.insertBefore(o,i.nextSibling):i.appendChild(o),E(o),o._x_ignore=!0}),n(()=>o.remove())});var dn=()=>{};dn.inline=(e,{modifiers:t},{cleanup:r})=>{t.includes("self")?e._x_ignoreSelf=!0:e._x_ignore=!0,r(()=>{t.includes("self")?delete e._x_ignoreSelf:delete e._x_ignore})};p("ignore",dn);p("effect",(e,{expression:t},{effect:r})=>r(x(e,t)));function ie(e,t,r,n){let i=e,o=c=>n(c),s={},a=(c,l)=>u=>l(c,u);if(r.includes("dot")&&(t=Ti(t)),r.includes("camel")&&(t=Ci(t)),r.includes("passive")&&(s.passive=!0),r.includes("capture")&&(s.capture=!0),r.includes("window")&&(i=window),r.includes("document")&&(i=document),r.includes("debounce")){let c=r[r.indexOf("debounce")+1]||"invalid-wait",l=Ge(c.split("ms")[0])?Number(c.split("ms")[0]):250;o=Pe(o,l)}if(r.includes("throttle")){let c=r[r.indexOf("throttle")+1]||"invalid-wait",l=Ge(c.split("ms")[0])?Number(c.split("ms")[0]):250;o=De(o,l)}return r.includes("prevent")&&(o=a(o,(c,l)=>{l.preventDefault(),c(l)})),r.includes("stop")&&(o=a(o,(c,l)=>{l.stopPropagation(),c(l)})),r.includes("self")&&(o=a(o,(c,l)=>{l.target===e&&c(l)})),(r.includes("away")||r.includes("outside"))&&(i=document,o=a(o,(c,l)=>{e.contains(l.target)||l.target.isConnected!==!1&&(e.offsetWidth<1&&e.offsetHeight<1||e._x_isShown!==!1&&c(l))})),r.includes("once")&&(o=a(o,(c,l)=>{c(l),i.removeEventListener(t,o,s)})),o=a(o,(c,l)=>{Ri(t)&&Mi(l,r)||c(l)}),i.addEventListener(t,o,s),()=>{i.removeEventListener(t,o,s)}}function Ti(e){return e.replace(/-/g,".")}function Ci(e){return e.toLowerCase().replace(/-(\w)/g,(t,r)=>r.toUpperCase())}function Ge(e){return!Array.isArray(e)&&!isNaN(e)}function Ni(e){return[" ","_"].includes(e)?e:e.replace(/([a-z])([A-Z])/g,"$1-$2").replace(/[_\s]/,"-").toLowerCase()}function Ri(e){return["keydown","keyup"].includes(e)}function Mi(e,t){let r=t.filter(o=>!["window","document","prevent","stop","once","capture"].includes(o));if(r.includes("debounce")){let o=r.indexOf("debounce");r.splice(o,Ge((r[o+1]||"invalid-wait").split("ms")[0])?2:1)}if(r.includes("throttle")){let o=r.indexOf("throttle");r.splice(o,Ge((r[o+1]||"invalid-wait").split("ms")[0])?2:1)}if(r.length===0||r.length===1&&pn(e.key).includes(r[0]))return!1;let i=["ctrl","shift","alt","meta","cmd","super"].filter(o=>r.includes(o));return r=r.filter(o=>!i.includes(o)),!(i.length>0&&i.filter(s=>((s==="cmd"||s==="super")&&(s="meta"),e[`${s}Key`])).length===i.length&&pn(e.key).includes(r[0]))}function pn(e){if(!e)return[];e=Ni(e);let t={ctrl:"control",slash:"/",space:" ",spacebar:" ",cmd:"meta",esc:"escape",up:"arrow-up",down:"arrow-down",left:"arrow-left",right:"arrow-right",period:".",equal:"=",minus:"-",underscore:"_"};return t[e]=e,Object.keys(t).map(r=>{if(t[r]===e)return r}).filter(r=>r)}p("model",(e,{modifiers:t,expression:r},{effect:n,cleanup:i})=>{let o=e;t.includes("parent")&&(o=e.parentNode);let s=x(o,r),a;typeof r=="string"?a=x(o,`${r} = __placeholder`):typeof r=="function"&&typeof r()=="string"?a=x(o,`${r()} = __placeholder`):a=()=>{};let c=()=>{let m;return s(v=>m=v),mn(m)?m.get():m},l=m=>{let v;s(k=>v=k),mn(v)?v.set(m):a(()=>{},{scope:{__placeholder:m}})};typeof r=="string"&&e.type==="radio"&&h(()=>{e.hasAttribute("name")||e.setAttribute("name",r)});var u=e.tagName.toLowerCase()==="select"||["checkbox","radio"].includes(e.type)||t.includes("lazy")?"change":"input";let d=te?()=>{}:ie(e,u,t,m=>{l(Ii(e,t,m,c()))});if(t.includes("fill")&&[null,""].includes(c())&&e.dispatchEvent(new Event(u,{})),e._x_removeModelListeners||(e._x_removeModelListeners={}),e._x_removeModelListeners.default=d,i(()=>e._x_removeModelListeners.default()),e.form){let m=ie(e.form,"reset",[],v=>{ee(()=>e._x_model&&e._x_model.set(e.value))});i(()=>m())}e._x_model={get(){return c()},set(m){l(m)}},e._x_forceModelUpdate=m=>{m=m===void 0?c():m,m===void 0&&typeof r=="string"&&r.match(/\./)&&(m=""),window.fromModel=!0,h(()=>me(e,"value",m)),delete window.fromModel},n(()=>{let m=c();t.includes("unintrusive")&&document.activeElement.isSameNode(e)||e._x_forceModelUpdate(m)})});function Ii(e,t,r,n){return h(()=>{if(r instanceof CustomEvent&&r.detail!==void 0)return r.detail??r.target.value;if(e.type==="checkbox")if(Array.isArray(n)){let i=t.includes("number")?Lt(r.target.value):r.target.value;return r.target.checked?n.concat([i]):n.filter(o=>!Pi(o,i))}else return r.target.checked;else{if(e.tagName.toLowerCase()==="select"&&e.multiple)return t.includes("number")?Array.from(r.target.selectedOptions).map(i=>{let o=i.value||i.text;return Lt(o)}):Array.from(r.target.selectedOptions).map(i=>i.value||i.text);{let i=r.target.value;return t.includes("number")?Lt(i):t.includes("trim")?i.trim():i}}})}function Lt(e){let t=e?parseFloat(e):null;return Di(t)?t:e}function Pi(e,t){return e==t}function Di(e){return!Array.isArray(e)&&!isNaN(e)}function mn(e){return e!==null&&typeof e=="object"&&typeof e.get=="function"&&typeof e.set=="function"}p("cloak",e=>queueMicrotask(()=>h(()=>e.removeAttribute(O("cloak")))));Me(()=>`[${O("init")}]`);p("init",N((e,{expression:t},{evaluate:r})=>typeof t=="string"?!!t.trim()&&r(t,{},!1):r(t,{},!1)));p("text",(e,{expression:t},{effect:r,evaluateLater:n})=>{let i=n(t);r(()=>{i(o=>{h(()=>{e.textContent=o})})})});p("html",(e,{expression:t},{effect:r,evaluateLater:n})=>{let i=n(t);r(()=>{i(o=>{h(()=>{e.innerHTML=o,e._x_ignoreSelf=!0,E(e),delete e._x_ignoreSelf})})})});Z(Te(":",Ce(O("bind:"))));p("bind",(e,{value:t,modifiers:r,expression:n,original:i},{effect:o})=>{if(!t){let a={};Dr(a),x(e,n)(l=>{wt(e,l,i)},{scope:a});return}if(t==="key")return ki(e,n);let s=x(e,n);o(()=>s(a=>{a===void 0&&typeof n=="string"&&n.match(/\./)&&(a=""),h(()=>me(e,t,a,r))}))});function ki(e,t){e._x_keyExpression=t}Re(()=>`[${O("data")}]`);p("data",N((e,{expression:t},{cleanup:r})=>{t=t===""?"{}":t;let n={};ce(n,e);let i={};Lr(i,n);let o=D(e,t,{scope:i});(o===void 0||o===!0)&&(o={}),ce(o,e);let s=C(o);Ee(s);let a=M(e,s);s.init&&D(e,s.init),r(()=>{s.destroy&&D(e,s.destroy),a()})}));p("show",(e,{modifiers:t,expression:r},{effect:n})=>{let i=x(e,r);e._x_doHide||(e._x_doHide=()=>{h(()=>{e.style.setProperty("display","none",t.includes("important")?"important":void 0)})}),e._x_doShow||(e._x_doShow=()=>{h(()=>{e.style.length===1&&e.style.display==="none"?e.removeAttribute("style"):e.style.removeProperty("display")})});let o=()=>{e._x_doHide(),e._x_isShown=!1},s=()=>{e._x_doShow(),e._x_isShown=!0},a=()=>setTimeout(s),c=de(d=>d?s():o(),d=>{typeof e._x_toggleAndCascadeWithTransitions=="function"?e._x_toggleAndCascadeWithTransitions(e,d,s,o):d?a():o()}),l,u=!0;n(()=>i(d=>{!u&&d===l||(t.includes("immediate")&&(d?a():o()),c(d),l=d,u=!1)}))});p("for",(e,{expression:t},{effect:r,cleanup:n})=>{let i=Li(t),o=x(e,i.items),s=x(e,e._x_keyExpression||"index");e._x_prevKeys=[],e._x_lookup={},r(()=>$i(e,i,o,s)),n(()=>{Object.values(e._x_lookup).forEach(a=>a.remove()),delete e._x_prevKeys,delete e._x_lookup})});function $i(e,t,r,n){let i=s=>typeof s=="object"&&!Array.isArray(s),o=e;r(s=>{Fi(s)&&s>=0&&(s=Array.from(Array(s).keys(),f=>f+1)),s===void 0&&(s=[]);let a=e._x_lookup,c=e._x_prevKeys,l=[],u=[];if(i(s))s=Object.entries(s).map(([f,_])=>{let b=hn(t,_,f,s);n(w=>u.push(w),{scope:{index:f,...b}}),l.push(b)});else for(let f=0;f<s.length;f++){let _=hn(t,s[f],f,s);n(b=>u.push(b),{scope:{index:f,..._}}),l.push(_)}let d=[],m=[],v=[],k=[];for(let f=0;f<c.length;f++){let _=c[f];u.indexOf(_)===-1&&v.push(_)}c=c.filter(f=>!v.includes(f));let xe="template";for(let f=0;f<u.length;f++){let _=u[f],b=c.indexOf(_);if(b===-1)c.splice(f,0,_),d.push([xe,f]);else if(b!==f){let w=c.splice(f,1)[0],A=c.splice(b-1,1)[0];c.splice(f,0,A),c.splice(b,0,w),m.push([w,A])}else k.push(_);xe=_}for(let f=0;f<v.length;f++){let _=v[f];a[_]._x_effects&&a[_]._x_effects.forEach(ye),a[_].remove(),a[_]=null,delete a[_]}for(let f=0;f<m.length;f++){let[_,b]=m[f],w=a[_],A=a[b],Y=document.createElement("div");h(()=>{A||S('x-for ":key" is undefined or invalid',o),A.after(Y),w.after(A),A._x_currentIfEl&&A.after(A._x_currentIfEl),Y.before(w),w._x_currentIfEl&&w.after(w._x_currentIfEl),Y.remove()}),A._x_refreshXForScope(l[u.indexOf(b)])}for(let f=0;f<d.length;f++){let[_,b]=d[f],w=_==="template"?o:a[_];w._x_currentIfEl&&(w=w._x_currentIfEl);let A=l[b],Y=u[b],oe=document.importNode(o.content,!0).firstElementChild,jt=C(A);M(oe,jt,o),oe._x_refreshXForScope=gn=>{Object.entries(gn).forEach(([xn,yn])=>{jt[xn]=yn})},h(()=>{w.after(oe),E(oe)}),typeof Y=="object"&&S("x-for key cannot be an object, it must be a string or an integer",o),a[Y]=oe}for(let f=0;f<k.length;f++)a[k[f]]._x_refreshXForScope(l[u.indexOf(k[f])]);o._x_prevKeys=u})}function Li(e){let t=/,([^,\}\]]*)(?:,([^,\}\]]*))?$/,r=/^\s*\(|\)\s*$/g,n=/([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/,i=e.match(n);if(!i)return;let o={};o.items=i[2].trim();let s=i[1].replace(r,"").trim(),a=s.match(t);return a?(o.item=s.replace(t,"").trim(),o.index=a[1].trim(),a[2]&&(o.collection=a[2].trim())):o.item=s,o}function hn(e,t,r,n){let i={};return/^\[.*\]$/.test(e.item)&&Array.isArray(t)?e.item.replace("[","").replace("]","").split(",").map(s=>s.trim()).forEach((s,a)=>{i[s]=t[a]}):/^\{.*\}$/.test(e.item)&&!Array.isArray(t)&&typeof t=="object"?e.item.replace("{","").replace("}","").split(",").map(s=>s.trim()).forEach(s=>{i[s]=t[s]}):i[e.item]=t,e.index&&(i[e.index]=r),e.collection&&(i[e.collection]=n),i}function Fi(e){return!Array.isArray(e)&&!isNaN(e)}function _n(){}_n.inline=(e,{expression:t},{cleanup:r})=>{let n=U(e);n._x_refs||(n._x_refs={}),n._x_refs[t]=e,r(()=>delete n._x_refs[t])};p("ref",_n);p("if",(e,{expression:t},{effect:r,cleanup:n})=>{let i=x(e,t),o=()=>{if(e._x_currentIfEl)return e._x_currentIfEl;let a=e.content.cloneNode(!0).firstElementChild;return M(a,{},e),h(()=>{e.after(a),E(a)}),e._x_currentIfEl=a,e._x_undoIf=()=>{T(a,c=>{c._x_effects&&c._x_effects.forEach(ye)}),a.remove(),delete e._x_currentIfEl},a},s=()=>{!e._x_undoIf||(e._x_undoIf(),delete e._x_undoIf)};r(()=>i(a=>{a?o():s()})),n(()=>e._x_undoIf&&e._x_undoIf())});p("id",(e,{expression:t},{evaluate:r})=>{r(t).forEach(i=>ln(e,i))});Z(Te("@",Ce(O("on:"))));p("on",N((e,{value:t,modifiers:r,expression:n},{cleanup:i})=>{let o=n?x(e,n):()=>{};e.tagName.toLowerCase()==="template"&&(e._x_forwardEvents||(e._x_forwardEvents=[]),e._x_forwardEvents.includes(t)||e._x_forwardEvents.push(t));let s=ie(e,t,r,a=>{o(()=>{},{scope:{$event:a},params:[a]})});i(()=>s())}));Je("Collapse","collapse","collapse");Je("Intersect","intersect","intersect");Je("Focus","trap","focus");Je("Mask","mask","mask");function Je(e,t,r){p(t,n=>S(`You can't use [x-${t}] without first installing the "${e}" plugin here: https://alpinejs.dev/plugins/${r}`,n))}j.setEvaluator(ft);j.setReactivityEngine({reactive:Be,effect:Br,release:zr,raw:g});var Ft=j;window.Alpine=Ft;queueMicrotask(()=>{Ft.start()});})();
+
+</script>
+
+<style>
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10+.
+ */
+
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+
+[hidden] {
+  display: none;
+}
+
+</style>
 
 <script>
 onmessage = (event) => {
+  console.clear();
   Alpine.store("data").nodes =
     event.data.pluginMessage.textElementsSelected;
   let clientStorage = event.data.pluginMessage.clientStorage;
-  if (clientStorage) {
-    Alpine.store("data").format = clientStorage.format;
-    Alpine.store("data").start = clientStorage.start;
-    Alpine.store("data").end = clientStorage.end;
-    Alpine.store("data").sort = clientStorage.sort;
-  }
+  // TODO: Add in clientStorage option
 };
 
-const getDate = function () {
-  let start = dayjs(Alpine.store("data").start).valueOf();
-  let end = dayjs(Alpine.store("data").end).valueOf();
-  let random = Math.floor(Math.random() * (end - start + 1)) + start;
-  return random;
-};
-
-const insertDates = function (format, start, end, sort) {
-  let clientStorageData = { format, start, end, sort };
-  let unixArray = [];
-  for (let i = 0; i < Alpine.store("data").nodes; i++) {
-    unixArray.push(getDate());
+const insertData = function (text) {
+  let selectedNodesLength = Alpine.store("data").nodes;
+  let data = [];
+  for(let x = 0; x < Alpine.store("data").nodes; x++){
+    data.push(`${text}-${x}`)
   }
-  if (sort == "asc") {
-    unixArray.sort(function (a, b) {
-      return a - b;
-    });
-  } else if (sort == "desc") {
-    unixArray.sort(function (a, b) {
-      return b - a;
-    });
-  }
-  let dates = unixArray.map((d) => {
-    return dayjs(d).format(format);
-  });
   parent.postMessage(
-    { pluginMessage: { type: "add-date", dates, clientStorageData } },
+    { pluginMessage: { type: "add-data", data } },
     "*"
   );
 };
@@ -64,10 +387,7 @@ const cancel = function () {
 
 document.addEventListener("alpine:init", () => {
   Alpine.store("data", {
-    format: "YYYY-MM-DD",
-    start: dayjs().subtract(2, "year").format("YYYY-MM-DD"),
-    end: dayjs().add(2, "year").format("YYYY-MM-DD"),
-    sort: "rand",
+    text: "Yo",
     nodes: 1,
   });
 });
@@ -289,112 +609,16 @@ input:focus {
 }
 </style>
 
-<svg width="841" height="111" viewBox="0 0 841 111" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M37.4878 72.9237H30.7235V90.6612C38.039 92.2646 42.5986 94.2187 44.4024 96.5236L42.8993 109H2.31336L0.810181 96.5236C2.11294 94.82 4.86877 93.1665 9.07768 91.5631V22.8677C4.96898 21.3645 2.21315 19.6609 0.810181 17.7569L2.31336 5.2805H42.1477C56.0771 5.48093 66.4491 8.03634 73.2635 12.9467C80.1781 17.7569 83.6355 26.3752 83.6355 38.8014C83.6355 61.5496 68.2529 72.9237 37.4878 72.9237ZM39.7426 21.6652H30.7235V56.539H40.7948C47.6092 56.539 52.6699 55.1861 55.9769 52.4804C59.3841 49.7747 61.0877 45.1148 61.0877 38.5008C61.0877 31.7866 59.2338 27.3272 55.526 25.1225C51.9183 22.8176 46.6572 21.6652 39.7426 21.6652Z" fill="#CE4536" />
-  <path d="M90.7673 2.27414C96.3792 0.971386 101.59 0.320007 106.4 0.320007C111.211 0.320007 115.269 0.470326 118.576 0.770965V92.3147C122.484 93.8179 125.24 95.5215 126.844 97.4255L125.341 109H90.7673L89.2642 97.4255C90.6671 95.5215 93.423 93.8179 97.5317 92.3147V18.9595C94.0242 17.7569 91.2684 16.0533 89.2642 13.8486L90.7673 2.27414Z" fill="#CE4536" />
-  <path d="M136.058 44.9645C136.058 43.4613 136.108 41.8579 136.208 40.1543C145.528 35.1437 155.549 32.6384 166.272 32.6384C176.994 32.6384 184.661 34.6928 189.27 38.8014C193.98 42.8099 196.335 49.5241 196.335 58.9441V90.9618C199.843 91.6633 202.599 92.5151 204.603 93.5172V106.595C199.492 109 192.176 110.203 182.656 110.203C181.654 107.597 180.802 104.44 180.101 100.733C175.792 107.046 167.975 110.203 156.651 110.203C149.937 110.203 144.175 108.248 139.365 104.34C134.655 100.432 132.3 95.1206 132.3 88.4064C132.3 81.6922 134.504 76.4311 138.914 72.623C143.423 68.7147 150.087 66.7606 158.906 66.7606H175.291V59.5453C175.291 51.7288 171.132 47.8205 162.814 47.8205C159.708 47.8205 157.152 48.1212 155.148 48.7224C154.948 52.9313 154.346 56.1882 153.344 58.4931H138.613C136.91 54.9857 136.058 50.4761 136.058 44.9645ZM163.115 94.8701C168.226 94.8701 172.284 93.3669 175.291 90.3606V78.0345H164.768C157.553 78.0345 153.946 80.7903 153.946 86.302C153.946 88.8073 154.697 90.8616 156.2 92.465C157.804 94.0684 160.109 94.8701 163.115 94.8701Z" fill="#CE4536" />
-  <path d="M245.297 47.9708C236.077 47.9708 231.467 55.8876 231.467 71.7211C231.467 79.7381 232.72 85.35 235.225 88.5567C237.831 91.6633 241.539 93.2166 246.349 93.2166C253.965 93.2166 260.679 92.5151 266.492 91.1121L271.001 102.687C267.794 104.791 263.485 106.595 258.074 108.098C252.662 109.501 247.401 110.203 242.29 110.203C220.645 110.203 209.822 97.676 209.822 72.623C209.822 57.9921 213.58 47.4698 221.095 41.0562C227.81 35.4443 235.977 32.6384 245.597 32.6384C255.218 32.6384 263.235 34.4422 269.648 38.0499C269.748 39.052 269.799 40.004 269.799 40.9059C269.799 46.618 268.496 52.0294 265.89 57.1403H252.662C251.259 54.635 250.408 51.6286 250.107 48.1212C248.904 48.021 247.301 47.9708 245.297 47.9708Z" fill="#CE4536" />
-  <path d="M313.721 110.203C301.695 110.203 292.626 106.996 286.513 100.582C280.5 94.1686 277.494 84.8489 277.494 72.623C277.494 65.2073 278.546 58.8439 280.651 53.5326C282.755 48.1212 285.611 43.9624 289.219 41.0562C296.234 35.4443 304.401 32.6384 313.721 32.6384C323.041 32.6384 330.156 35.0435 335.066 39.8537C340.077 44.5636 342.582 53.0817 342.582 65.4077C342.582 72.623 339.024 76.2307 331.909 76.2307H299.29C299.691 82.544 301.294 87.0034 304.1 89.609C307.007 92.2145 311.566 93.5172 317.779 93.5172C321.187 93.5172 324.443 93.1164 327.55 92.3147C330.657 91.513 332.911 90.7113 334.314 89.9096L336.419 88.7071L340.928 100.733C340.327 101.434 339.425 102.336 338.223 103.438C337.12 104.44 334.214 105.843 329.504 107.647C324.894 109.351 319.633 110.203 313.721 110.203ZM323.191 62.8523C323.391 61.4494 323.491 59.7458 323.491 57.7415C323.491 55.7373 322.69 53.6328 321.086 51.4282C319.483 49.1233 316.677 47.9708 312.669 47.9708C308.76 47.9708 305.754 49.1734 303.649 51.5785C301.545 53.9836 300.142 58.0422 299.441 63.7542L323.191 62.8523Z" fill="#CE4536" />
-  <path d="M350.007 2.27414C355.619 0.971386 360.83 0.320007 365.64 0.320007C370.451 0.320007 374.509 0.470326 377.816 0.770965V38.3505C380.221 36.7471 383.428 35.3942 387.437 34.2919C391.445 33.1896 395.003 32.6384 398.109 32.6384C408.03 32.6384 414.895 35.0435 418.703 39.8537C422.511 44.6638 424.415 51.9793 424.415 61.8001V92.3147C428.323 93.8179 431.079 95.5215 432.682 97.4255L431.179 109H396.606L395.103 97.4255C396.506 95.5215 399.262 93.8179 403.37 92.3147V62.5517C403.37 57.1403 402.468 53.5326 400.665 51.7288C398.961 49.8248 395.804 48.8728 391.195 48.8728C386.585 48.8728 382.125 50.4762 377.816 53.6829V92.3147C381.724 93.8179 384.48 95.5215 386.084 97.4255L384.581 109H350.007L348.504 97.4255C349.907 95.5215 352.663 93.8179 356.772 92.3147V18.9595C353.264 17.7569 350.508 16.0533 348.504 13.8486L350.007 2.27414Z" fill="#CE4536" />
-  <path d="M472.668 110.203C460.843 110.203 452.075 107.046 446.362 100.733C440.65 94.4191 437.794 84.899 437.794 72.1721C437.794 59.3449 440.951 49.5742 447.264 42.86C453.678 36.0456 462.847 32.6384 474.773 32.6384C486.698 32.6384 495.516 35.6448 501.229 41.6575C507.041 47.6702 509.947 57.0901 509.947 69.9173C509.947 82.6442 506.69 92.5652 500.176 99.6803C493.763 106.695 484.593 110.203 472.668 110.203ZM459.44 70.8192C459.44 86.8531 464.25 94.8701 473.871 94.8701C478.781 94.8701 482.389 93.0663 484.694 89.4586C487.099 85.7508 488.301 79.7381 488.301 71.4205C488.301 55.7874 483.391 47.9708 473.57 47.9708C468.76 47.9708 465.202 49.7246 462.897 53.232C460.593 56.6392 459.44 62.5016 459.44 70.8192Z" fill="#CE4536" />
-  <path d="M517.354 2.27414C522.966 0.971386 528.177 0.320007 532.987 0.320007C537.797 0.320007 541.856 0.470326 545.163 0.770965V92.3147C549.071 93.8179 551.827 95.5215 553.43 97.4255L551.927 109H517.354L515.85 97.4255C517.253 95.5215 520.009 93.8179 524.118 92.3147V18.9595C520.611 17.7569 517.855 16.0533 515.85 13.8486L517.354 2.27414Z" fill="#CE4536" />
-  <path d="M598.72 2.27414C604.432 0.971386 609.894 0.320007 615.105 0.320007C620.316 0.320007 624.776 0.470326 628.483 0.770965V90.9618C631.49 91.4629 634.246 92.3147 636.751 93.5172V105.392C630.738 108.599 623.122 110.203 613.903 110.203C612.9 109.701 611.898 108.8 610.896 107.497C609.994 106.194 609.493 104.941 609.393 103.739C607.188 105.543 604.332 107.096 600.825 108.399C597.317 109.601 593.86 110.203 590.453 110.203C579.63 110.203 571.763 107.296 566.853 101.484C562.043 95.5716 559.638 85.9512 559.638 72.623C559.638 57.491 563.346 46.8685 570.761 40.7556C577.275 35.3441 585.292 32.6384 594.812 32.6384C599.021 32.6384 603.23 33.1395 607.439 34.1416V19.2601C602.829 17.9573 599.422 16.1535 597.217 13.8486L598.72 2.27414ZM593.61 94.8701C599.322 94.8701 603.931 93.1665 607.439 89.7593V49.474C603.33 48.4719 598.971 47.9708 594.361 47.9708C589.751 47.9708 586.394 50.0252 584.29 54.1339C582.286 58.1424 581.284 64.2052 581.284 72.3224C581.284 80.3393 582.286 86.1015 584.29 89.609C586.294 93.1164 589.401 94.8701 593.61 94.8701Z" fill="#CE4536" />
-  <path d="M646.024 44.9645C646.024 43.4613 646.074 41.8579 646.174 40.1543C655.494 35.1437 665.515 32.6384 676.238 32.6384C686.96 32.6384 694.627 34.6928 699.236 38.8014C703.946 42.8099 706.301 49.5241 706.301 58.9441V90.9618C709.809 91.6633 712.564 92.5151 714.569 93.5172V106.595C709.458 109 702.142 110.203 692.622 110.203C691.62 107.597 690.768 104.44 690.067 100.733C685.758 107.046 677.941 110.203 666.617 110.203C659.903 110.203 654.141 108.248 649.331 104.34C644.621 100.432 642.266 95.1206 642.266 88.4064C642.266 81.6922 644.47 76.4311 648.88 72.623C653.389 68.7147 660.053 66.7606 668.872 66.7606H685.257V59.5453C685.257 51.7288 681.098 47.8205 672.78 47.8205C669.674 47.8205 667.118 48.1212 665.114 48.7224C664.914 52.9313 664.312 56.1882 663.31 58.4931H648.579C646.875 54.9857 646.024 50.4761 646.024 44.9645ZM673.081 94.8701C678.192 94.8701 682.25 93.3669 685.257 90.3606V78.0345H674.734C667.519 78.0345 663.911 80.7903 663.911 86.302C663.911 88.8073 664.663 90.8616 666.166 92.465C667.77 94.0684 670.075 94.8701 673.081 94.8701Z" fill="#CE4536" />
-  <path d="M747.296 14.9009V33.841H768.791V46.4677H747.296V84.4982C747.296 87.7049 747.747 90.0599 748.649 91.5631C749.55 92.9661 751.705 93.6676 755.112 93.6676C758.519 93.6676 762.177 92.916 766.085 91.4128L770.595 103.138C762.879 107.046 754.962 109 746.845 109C738.828 109 733.366 107.296 730.46 103.889C727.654 100.382 726.251 95.3211 726.251 88.7071V46.4677H719.487L717.833 37.2983C719.437 35.3942 722.744 33.4902 727.754 31.5862C728.957 23.3688 731.813 17.807 736.323 14.9009H747.296Z" fill="#CE4536" />
-  <path d="M811.943 110.203C799.918 110.203 790.848 106.996 784.736 100.582C778.723 94.1686 775.716 84.8489 775.716 72.623C775.716 65.2073 776.769 58.8439 778.873 53.5326C780.978 48.1212 783.834 43.9624 787.441 41.0562C794.456 35.4443 802.623 32.6384 811.943 32.6384C821.263 32.6384 828.378 35.0435 833.288 39.8537C838.299 44.5636 840.804 53.0817 840.804 65.4077C840.804 72.623 837.247 76.2307 830.132 76.2307H797.513C797.913 82.544 799.517 87.0034 802.323 89.609C805.229 92.2145 809.789 93.5172 816.002 93.5172C819.409 93.5172 822.666 93.1164 825.772 92.3147C828.879 91.513 831.134 90.7113 832.537 89.9096L834.641 88.7071L839.151 100.733C838.549 101.434 837.647 102.336 836.445 103.438C835.343 104.44 832.436 105.843 827.727 107.647C823.117 109.351 817.856 110.203 811.943 110.203ZM821.413 62.8523C821.614 61.4494 821.714 59.7458 821.714 57.7415C821.714 55.7373 820.912 53.6328 819.309 51.4282C817.705 49.1233 814.899 47.9708 810.891 47.9708C806.983 47.9708 803.976 49.1734 801.872 51.5785C799.767 53.9836 798.364 58.0422 797.663 63.7542L821.413 62.8523Z" fill="#CE4536" />
-</svg>
-
-
 <div x-data x-cloak>
   <h1>Mock Builder</h1>
 
   <template x-if="$store.data.nodes">
     <div>
       <form
-        @submit.prevent="insertDates($store.data.format, $store.data.start, $store.data.end, $store.data.sort)"
+        @submit.prevent="insertData([$store.data.text])"
       >
-        <label for="date"
-          >Date Format
-          <a
-            class="help"
-            title="day.js formatting documentation"
-            href="https://day.js.org/docs/en/display/format"
-            target="_blank"
-            >?</a
-          >
-        </label>
-        <input
-          x-model="$store.data.format"
-          id="focus-me"
-          x-init="$nextTick(() => { $el.focus(); $el.select() })"
-        />
-        <p class="small">
-          <strong>Example Output: </strong
-          ><span x-text="dayjs(getDate()).format($store.data.format)"></span>
-        </p>
-        <div class="dropdown-container" x-data="{expanded:false}">
-          <button
-            type="button"
-            @click="expanded ? expanded = false : expanded = true"
-            :aria-expanded="expanded ? true : false"
-            aria-controls="dropdown-content"
-          >
-            Options
-          </button>
-          <div
-            class="dropdown"
-            :style="expanded ? 'max-height: ' + $el.scrollHeight + 'px' : ''"
-            id="dropdown-content"
-          >
-            <div class="row">
-              <label for="start">Starting Date</label>
-              <input id="start" type="date" required x-model="$store.data.start" />
-              <label for="end">Ending Date</label>
-              <input id="end" type="date" required x-model="$store.data.end" />
-            </div>
-            <div class="row">
-              <fieldset>
-                <legend>Order</legend>
-                <p class="small">
-                  The sort order is affected by the time the text layer was created.
-                </p>
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    id="rand"
-                    value="rand"
-                    x-model="$store.data.sort"
-                  />
-                  <label for="rand">Random</label>
-                </div>
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    id="asc"
-                    value="asc"
-                    x-model="$store.data.sort"
-                  />
-                  <label for="asc">Ascending</label>
-                </div>
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    id="desc"
-                    value="desc"
-                    x-model="$store.data.sort"
-                  />
-                  <label for="desc">Descending</label>
-                </div>
-              </fieldset>
-            </div>
-          </div>
-        </div>
-        <template x-if="$store.data.start > $store.data.end">
-          <div class="alert">
-            The option for start date cannot be after the end date.
-          </div>
-        </template>
-        <button class="btn btn-blue" type="submit" :disabled="$store.data.start > $store.data.end">Insert Date</button>
+        <input type="text" x-model="$store.data.text" />
+        <button class="btn btn-blue" type="submit" :disabled="$store.data.start > $store.data.end">Insert Text</button>
         <button class="btn btn-clear" type="button" @click="cancel">Cancel</button>
       </form>
     </div>

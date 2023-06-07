@@ -1,2 +1,10 @@
-node_modules
 .DS_Store
+
+# Node
+*.log
+*.log.*
+node_modules
+
+out/
+dist/
+code.js

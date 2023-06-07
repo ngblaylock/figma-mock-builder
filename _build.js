@@ -2,16 +2,21 @@ const fs = require("fs");
 const watch = require("node-watch");
 const chalk = require("chalk");
 const sass = require("sass");
-const files = ["head.html", "script.js", "style.scss", "placeholdate.svg", "body.html"];
-const root = "./build-ui/";
-
+const files = [
+  "./node_modules/alpinejs/dist/cdn.min.js",
+  "./node_modules/normalize.css/normalize.css",
+  "./build-ui/script.js",
+  "./build-ui/style.scss",
+  "./build-ui/body.html",
+];
+const watchFolder = "./build-ui/";
 
 const getFiles = function (file) {
   let ext = file.split(".").pop();
   if (ext == "scss") {
     return new Promise((resolve, reject) => {
       try {
-        const result = sass.compile(`${root}${file}`);
+        const result = sass.compile(file);
         resolve(`<style>\n${result.css}\n</style>`);
       } catch (err) {
         reject("Sass didn't compile correctly: " + err);
@@ -19,7 +24,7 @@ const getFiles = function (file) {
     });
   } else {
     return new Promise((resolve, reject) => {
-      fs.readFile(`${root}${file}`, "utf8", (err, data) => {
+      fs.readFile(file, "utf8", (err, data) => {
         if (err) {
           reject(err);
         }
@@ -55,9 +60,9 @@ const generateUi = function () {
 
 generateUi();
 
-console.log(chalk.yellow(`👉  Watching files in ${root} ...`));
+console.log(chalk.yellow(`👉  Watching files in ${watchFolder} ...`));
 watch(
-  root,
+  watchFolder,
   {
     recursive: true,
     delay: 1000,
