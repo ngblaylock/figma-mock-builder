@@ -1,8 +1,9 @@
-$primary: #CE4536;
-$light: #f1f1f1;
-$gray: #888484;
-$border: darken($light, 20);
-$blue: #0e2842;
+$primary: #366D49;
+$gray: #E8E5DF;
+$border: rgba(white, 5);
+$light: #46433F;
+$dark: #3C3935;
+$error: #A52E2E;
 
 [x-cloak] {
   display: none !important;
@@ -26,15 +27,14 @@ $blue: #0e2842;
 }
 body {
   font-family: sans-serif;
-  padding: 1em;
   overflow-y: scroll;
 }
-svg {
-  max-width: 75%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 24px;
+section{
+  padding: 1em;
+}
+hr{
+  border: 0;
+  border-top: 1px solid $gray;
 }
 h1 {
   position: absolute;
@@ -71,11 +71,11 @@ input:focus {
     cursor: pointer;
   }
 }
-.btn-blue {
-  background: $blue;
+.btn-primary {
+  background: $primary;
   color: white;
   &:hover {
-    background: darken($blue, 5);
+    background: darken($primary, 5);
   }
   &:disabled{
     background: $gray;
@@ -88,11 +88,11 @@ input:focus {
   border: 1px solid transparent;
   background: transparent;
   &:hover {
-    background: $light;
+    background: $gray;
   }
 }
 .help {
-  background: $blue;
+  background: $primary;
   width: 16px;
   height: 16px;
   border-radius: 16px;
@@ -105,7 +105,7 @@ input:focus {
   font-weight: bold;
   transition: 0.4s;
   &:hover {
-    background: darken($blue, 10);
+    background: darken($primary, 10);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   }
 }
@@ -130,7 +130,7 @@ input:focus {
     display: flex;
     justify-content: space-between;
     &:hover {
-      background: rgba($blue, 0.04);
+      background: rgba($primary, 0.04);
     }
     &::after {
       content: "+";
@@ -148,7 +148,7 @@ input:focus {
   .row {
     padding: 1em;
     padding-top: 0;
-    border-top: 1px solid rgba($blue, 0.1);
+    border-top: 1px solid rgba($primary, 0.1);
   }
   label,
   legend {
@@ -177,10 +177,10 @@ input:focus {
   }
 }
 .alert {
-  background: $primary;
+  background: $error;
   padding: 1em;
   border-radius: 0.25em;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   color: white;
   font-weight: bold;
   display: flex;
@@ -197,7 +197,7 @@ input:focus {
     margin-right: 1em;
     align-items: center;
     justify-content: center;
-    color: $primary;
+    color: $error;
     font-weight: bold;
   }
 }

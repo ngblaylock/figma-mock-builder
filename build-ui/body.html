@@ -3,19 +3,30 @@
 
   <template x-if="$store.data.nodes">
     <div>
-      <form
-        @submit.prevent="insertData([$store.data.text])"
-      >
-        <input type="text" x-model="$store.data.text" />
-        <button class="btn btn-blue" type="submit" :disabled="$store.data.start > $store.data.end">Insert Text</button>
-        <button class="btn btn-clear" type="button" @click="cancel">Cancel</button>
+      <form @submit.prevent="insertData([$store.data.text])">
+        <hr />
+        <section>
+          <input type="text" x-model="$store.data.text" />
+          <button
+            class="btn btn-primary"
+            type="submit"
+            :disabled="$store.data.start > $store.data.end"
+          >
+            Insert Text
+          </button>
+          <button class="btn btn-clear" type="button" @click="cancel">
+            Cancel
+          </button>
+        </section>
       </form>
     </div>
   </template>
   <template x-if="!$store.data.nodes">
+    <section>
       <div class="alert">
-        There are no text layers selected. Did you accidentally select a group
-        or frame instead?
+        There are no text layers selected. Did you accidentally select a group or
+        frame instead?
       </div>
+    </section>
   </template>
 </div>
