@@ -4,7 +4,7 @@ const chalk = require("chalk");
 const sass = require("sass");
 const files = [
   "./node_modules/alpinejs/dist/cdn.min.js",
-  "./node_modules/normalize.css/normalize.css",
+  // "./node_modules/normalize.css/normalize.css",
   "./build-ui/script.js",
   "./build-ui/style.scss",
   "./build-ui/body.html",
@@ -16,7 +16,7 @@ const getFiles = function (file) {
   if (ext == "scss") {
     return new Promise((resolve, reject) => {
       try {
-        const result = sass.compile(file);
+        const result = sass.compile(file, {style: "compressed"});
         resolve(`<style>\n${result.css}\n</style>`);
       } catch (err) {
         reject("Sass didn't compile correctly: " + err);

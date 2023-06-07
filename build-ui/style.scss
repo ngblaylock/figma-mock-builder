@@ -5,6 +5,8 @@ $light: #46433F;
 $dark: #3C3935;
 $error: #A52E2E;
 
+@import "../node_modules/modern-normalize/modern-normalize";
+
 [x-cloak] {
   display: none !important;
 }
