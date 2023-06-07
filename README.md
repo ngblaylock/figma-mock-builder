@@ -17,6 +17,8 @@ When editing the UI, only edit changes in the `build-ui` directory. Running `npm
 
 Open any project file in the desktop version and go to `Figma > Plugins > Development > Import plugin from manifest...`. Select the `manifest.json` from this directory. You then will be able to test out the plugin.
 
+You only need to do that once. After that you can open it like any other plugin.
+
 ## Publish the Changes
 
 1. Go to Figma's Home page
