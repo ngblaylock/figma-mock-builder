@@ -1,21 +1,17 @@
 onmessage = (event) => {
   console.clear();
-  Alpine.store("data").nodes =
-    event.data.pluginMessage.textElementsSelected;
+  Alpine.store("data").nodes = event.data.pluginMessage.textElementsSelected;
   let clientStorage = event.data.pluginMessage.clientStorage;
   // TODO: Add in clientStorage option
 };
 
-const insertData = function (text) {
-  let selectedNodesLength = Alpine.store("data").nodes;
+const insertData = function () {
+  let text = document.querySelector('.builder-content').innerText;
   let data = [];
-  for(let x = 0; x < Alpine.store("data").nodes; x++){
-    data.push(`${text}-${x}`)
+  for (let x = 0; x < Alpine.store("data").nodes; x++) {
+    data.push(`${text}-${x}`);
   }
-  parent.postMessage(
-    { pluginMessage: { type: "add-data", data } },
-    "*"
-  );
+  parent.postMessage({ pluginMessage: { type: "add-data", data } }, "*");
 };
 
 const cancel = function () {
@@ -24,7 +20,8 @@ const cancel = function () {
 
 document.addEventListener("alpine:init", () => {
   Alpine.store("data", {
-    text: "Yo",
+    showInsertTypes: false,
+    openTab: "Builder",
     nodes: 1,
   });
 });

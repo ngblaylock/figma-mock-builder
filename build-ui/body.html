@@ -1,31 +1,91 @@
-<div x-data x-cloak>
-  <h1>Mock Builder</h1>
-
+<div x-data x-cloak class="h-100">
   <template x-if="$store.data.nodes">
     <div>
-      <form @submit.prevent="insertData([$store.data.text])">
-        <hr />
-        <section>
-          <input type="text" x-model="$store.data.text" />
+      <form @submit.prevent="insertData()" class="h-100">
+        <div class="tabs">
           <button
-            class="btn btn-primary"
-            type="submit"
-            :disabled="$store.data.start > $store.data.end"
+            type="button"
+            class="tab"
+            :class="$store.data.openTab === 'Builder' && 'active'"
+            @click="$store.data.openTab = 'Builder'"
           >
-            Insert Text
+            Builder
           </button>
-          <button class="btn btn-clear" type="button" @click="cancel">
-            Cancel
+          <button
+            type="button"
+            class="tab"
+            :class="$store.data.openTab === 'Recent' && 'active'"
+            @click="$store.data.openTab = 'Recent'"
+          >
+            Recent
           </button>
-        </section>
+        </div>
+        <template x-if="$store.data.openTab === 'Builder'">
+          <div class="builder">
+            <section class="builder">
+              <div class="builder-content" contenteditable>
+                Insert content here...
+              </div>
+              <div class="builder-btn">
+                <button
+                  type="button"
+                  class="btn btn-insert-mock"
+                  @click="$store.data.showInsertTypes = !$store.data.showInsertTypes"
+                >
+                  + Insert Mock Type
+                </button>
+                <div class="popup" :class="$store.data.showInsertTypes && 'open'">
+                  <div class="popup-content">
+                    <div class="popup-search">
+                      <input type="search" placeholder="Search" />
+                    </div>
+                    <div class="popup-section">
+                      <h2>Address</h2>
+                      <button type="button">Country</button>
+                      <button type="button">City</button>
+                      <button type="button">Zip</button>
+                      <button type="button">Street</button>
+                    </div>
+                    <div class="popup-section">
+                      <h2>Text</h2>
+                      <button type="button">Sentences</button>
+                      <button type="button">Title</button>
+                      <button type="button">Text</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <hr />
+            <section>
+              <div class="example-output">
+                <div><strong>Example Output:</strong></div>
+                <div>Hi, My name is...</div>
+              </div>
+              <button
+                class="btn btn-primary"
+                type="submit"
+                :disabled="$store.data.start > $store.data.end"
+              >
+                Insert Text
+              </button>
+              <button class="btn btn-clear" type="button" @click="cancel">
+                Cancel
+              </button>
+            </section>
+          </div>
+        </template>
+        <template x-if="$store.data.openTab === 'Recent'">
+          <section class="recent">Recent content here...</section>
+        </template>
       </form>
     </div>
   </template>
   <template x-if="!$store.data.nodes">
     <section>
       <div class="alert">
-        There are no text layers selected. Did you accidentally select a group or
-        frame instead?
+        There are no text layers selected. Did you accidentally select a group
+        or frame instead?
       </div>
     </section>
   </template>

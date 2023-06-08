@@ -12,7 +12,7 @@ for (const node of figma.currentPage.selection) {
 // })
 
 figma.clientStorage.getAsync('mockBuilder').then(res => {
-  figma.showUI(__html__, {height: 300, width: 350, title: "Mock Builder"});
+  figma.showUI(__html__, {height: 448, width: 448, title: "Mock Builder"});
   figma.ui.postMessage({textElementsSelected, clientStorage: res});
 })
 
