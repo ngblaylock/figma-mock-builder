@@ -12,9 +12,9 @@
   "author": "Nathan Blaylock",
   "license": "MIT",
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@figma/plugin-typings": "^1.44.0",
     "alpinejs": "^3.12.2",
-    "casual": "^1.6.2",
     "chalk": "^4.1.2",
     "modern-normalize": "^2.0.0",
     "node-watch": "^0.7.3",

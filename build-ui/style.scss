@@ -33,6 +33,11 @@ body {
 section{
   padding: 1em;
 }
+pre{
+  background: $dark;
+  color: $gray;
+  padding: 12px;
+}
 form{
   display: flex;
   flex-direction: column;

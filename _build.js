@@ -4,7 +4,6 @@ const chalk = require("chalk");
 const sass = require("sass");
 const files = [
   "./node_modules/alpinejs/dist/cdn.min.js",
-  // "./node_modules/normalize.css/normalize.css",
   "./build-ui/script.js",
   "./build-ui/style.scss",
   "./build-ui/body.html",
