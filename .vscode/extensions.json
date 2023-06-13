@@ -1,8 +1,6 @@
 {
   "recommendations": [
-    "streetsidesoftware.code-spell-checker",
-    "seunlanlege.action-buttons",
-    "sperovita.alpinejs-syntax-highlight",
-    "divyamrit.alpine-snippets"
+    "ginfuru.better-nunjucks",
+    "esbenp.prettier-vscode"
   ]
 }
