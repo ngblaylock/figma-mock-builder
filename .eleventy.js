@@ -28,6 +28,9 @@ module.exports = (eleventyConfig) => {
     } else if (extension === "js") {
       const jsContent = fs.readFileSync(filePath, "utf-8");
       return `<script>${jsContent}</script>`;
+    } else if (extension === "mjs") {
+      const jsContent = fs.readFileSync(filePath, "utf-8");
+      return `<script type="module">${jsContent}</script>`;
     }
     return "";
   });

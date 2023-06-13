@@ -15,10 +15,19 @@ const checkLength = () => {
   parent.postMessage({ pluginMessage: { type: "check length" } }, "*");
 };
 
+const getFakeData = (text) => {
+  let val = window.falso.find(f => f.text === text);
+  return val?.function(val?.config) || '';
+}
+
 const insertData = () => {
   console.log("inserting...");
   let text = document.querySelector(".builder-content").innerText;
-  parent.postMessage({ pluginMessage: { type: "insert data", text } }, "*");
+  let textArray = []
+  for(let i = 0; i < Alpine.store("data").nodes; i++){
+    textArray.push(`${getFakeData('Last Name')}, ${getFakeData('First Name')} ${getFakeData('Doesn\'t Exist')} --- ${getFakeData('Integer')}`);
+  }
+  parent.postMessage({ pluginMessage: { type: "insert data", textArray } }, "*");
 };
 
 const cancel = () => {

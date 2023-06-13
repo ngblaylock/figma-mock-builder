@@ -11,7 +11,8 @@
   "ui": "./dist/index.html",
   "networkAccess": {
     "allowedDomains": [
-      "none"
-    ]
+      "cdn.jsdelivr.net"
+    ],
+    "reasoning": "Mock Builder requires an external script for retrieving fake data."
   }
 }
