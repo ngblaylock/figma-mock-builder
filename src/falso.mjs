@@ -4,9 +4,9 @@ import {
   randNumber,
 } from "https://cdn.jsdelivr.net/npm/@ngneat/falso@6.4.0/+esm";
 
-window.falso = [];
+let falso = [];
 
-window.falso.push(
+falso.push(
   {
     function: randFirstName,
     text: "First Name",
@@ -33,3 +33,5 @@ window.falso.push(
     },
   },
 );
+
+Alpine.store("data").falso = falso;

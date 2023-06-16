@@ -37,11 +37,13 @@ pre{
   background: $dark;
   color: $gray;
   padding: 12px;
+  margin: 0;
 }
 form{
   display: flex;
   flex-direction: column;
   margin: 0;
+  height: 100vh;
 }
 hr{
   border: 0;
@@ -158,6 +160,12 @@ input:focus {
 }
 .builder-content{
   height: 100%;
+  span{
+    font-size: .8em;
+    background: $gray;
+    padding: 2px 12px;
+    border-radius: 100px;
+  }
 }
 .builder-btn{
   text-align: center;

@@ -43,7 +43,7 @@ figma.ui.onmessage = async (msg) => {
         for (const font of fonts) {
           await figma.loadFontAsync(font);
         }
-        node.characters = msg.textArray.pop();
+        node.characters = msg.insertIntoSelectedTextNodes.pop();
       }
     }
     figma.closePlugin();

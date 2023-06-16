@@ -12,9 +12,9 @@
     {{ './src/script.js' | inlineFromFile | safe }}
   </head>
   <body>
-    <div x-data x-cloak class="h-100">
+    <div x-data x-cloak>
       <div>
-        <form @submit.prevent="checkLength()" class="h-100">
+        <form @submit.prevent="checkLength()">
           <div class="tabs">
             <button
               type="button"
@@ -33,67 +33,8 @@
               Recent
             </button>
           </div>
-          <template x-if="$store.data.openTab === 'Builder'">
-            <div class="builder">
-              <section class="builder">
-                <div class="builder-content" contenteditable>
-                  Insert content here...
-                </div>
-                <div class="builder-btn">
-                  <button
-                    type="button"
-                    class="btn btn-insert-mock"
-                    @click="$store.data.showInsertTypes = !$store.data.showInsertTypes"
-                  >
-                    + Insert Mock Type
-                  </button>
-                  <div
-                    class="popup"
-                    :class="$store.data.showInsertTypes && 'open'"
-                  >
-                    <div class="popup-content">
-                      <div class="popup-search">
-                        <input type="search" placeholder="Search" />
-                      </div>
-                      <div class="popup-section">
-                        <h2>Address</h2>
-                        <button type="button">Country</button>
-                        <button type="button">City</button>
-                        <button type="button">Zip</button>
-                        <button type="button">Street</button>
-                      </div>
-                      <div class="popup-section">
-                        <h2>Text</h2>
-                        <button type="button">Sentences</button>
-                        <button type="button">Title</button>
-                        <button type="button">Text</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <hr />
-              <section>
-                <div class="example-output">
-                  <div><strong>Example Output:</strong></div>
-                  <div>Hi, My name is...</div>
-                </div>
-                <button
-                  class="btn btn-primary"
-                  type="submit"
-                  :disabled="$store.data.start > $store.data.end"
-                >
-                  Insert Text
-                </button>
-                <button class="btn btn-clear" type="button" @click="cancel">
-                  Cancel
-                </button>
-              </section>
-            </div>
-          </template>
-          <template x-if="$store.data.openTab === 'Recent'">
-            <section class="recent">Recent content here...</section>
-          </template>
+          {% include "builder-tab.njk" %}
+          {% include "recent-tab.njk" %}
         </form>
         <pre x-text="JSON.stringify($store.data, false, 2)"></pre>
       </div>
