@@ -31,9 +31,14 @@ const insertFalsoBlock = (falsoObj) => {
     range.deleteContents();
     range.insertNode(span);
 
-    // Set the cursor right after the inserted span
+    // Create an empty text node
+    const emptyTextNode = document.createTextNode("\u00A0");
+    console.log(span.nextSibling);
+    span.parentNode.insertBefore(emptyTextNode, span.nextSibling);
+
+    // Set the cursor right after the empty text node
     const newRange = document.createRange();
-    newRange.setStartAfter(span);
+    newRange.setStartAfter(emptyTextNode);
     newRange.collapse(true);
 
     selection.removeAllRanges();
@@ -111,4 +116,15 @@ document.addEventListener("alpine:init", () => {
       return category;
     },
   });
+});
+
+window.addEventListener("load", function () {
+  const textBox = document.querySelector(".builder-content");
+  textBox.focus();
+  const range = document.createRange();
+  range.selectNodeContents(textBox);
+  range.collapse(false); // Set the range to the end
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
 });

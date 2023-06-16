@@ -67,7 +67,8 @@ input:focus {
   outline-offset: 3px;
 }
 div[contenteditable]{
-  outline: none;
+  outline-offset: 6px;
+  // outline: none;
   // background: $gray;
 }
 .btn {
@@ -174,7 +175,7 @@ div[contenteditable]{
 }
 .builder-btn{
   text-align: center;
-  margin-top: 8px;
+  margin-top: 14px;
   position: relative;
 }
 
