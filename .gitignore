@@ -1,10 +1,4 @@
-.DS_Store
-
-# Node
-*.log
-*.log.*
 node_modules
-
-out/
-dist/
+.DS_Store
+dist
 code.js

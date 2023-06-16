@@ -1,0 +1,27 @@
+<template x-if="$store.data.openTab === 'Builder'">
+  <div class="builder">
+    <section class="builder">
+      <div class="builder-content" contenteditable>
+        My name is <span contenteditable="false">First Name</span><span contenteditable="false">Last Name</span>. My favorite number is <span contenteditable="false">Integer</span>.
+      </div>
+      {% include "insert-mock-type.njk" %}
+    </section>
+    <hr />
+    <section>
+      <div class="example-output">
+        <div><strong>Example Output:</strong></div>
+        <div>Hi, My name is...</div>
+      </div>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        :disabled="$store.data.start > $store.data.end"
+      >
+        Insert Text
+      </button>
+      <button class="btn btn-clear" type="button" @click="cancel">
+        Cancel
+      </button>
+    </section>
+  </div>
+</template>

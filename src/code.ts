@@ -1,8 +1,9 @@
 let textElementsSelected = 0;
 
 const setTextNodesLength = () => {
+  textElementsSelected = 0;
   for (const node of figma.currentPage.selection) {
-    if (node.type == "TEXT") {
+    if (node.type == "TEXT") {      
       textElementsSelected++;
     }
   }
@@ -24,7 +25,7 @@ figma.clientStorage.getAsync("mockBuilder").then((res) => {
 });
 
 figma.ui.onmessage = async (msg) => {
-  setTextNodesLength();
+  setTextNodesLength();  
   if (msg.type === "check length") {
     if (!textElementsSelected) {
       figma.closePlugin(
@@ -42,7 +43,7 @@ figma.ui.onmessage = async (msg) => {
         for (const font of fonts) {
           await figma.loadFontAsync(font);
         }
-        node.characters = msg.text;
+        node.characters = msg.insertIntoSelectedTextNodes.pop();
       }
     }
     figma.closePlugin();

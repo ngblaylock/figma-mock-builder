@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mock Builder</title>
+    <!---->
+    {{ './src/style.scss' | inlineFromFile | safe }}
+    <!---->
+    {{ './src/falso.mjs' | inlineFromFile | safe }}
+    <!---->
+    {{ './src/script.js' | inlineFromFile | safe }}
+  </head>
+  <body>
+    <div x-data x-cloak>
+      <div>
+        <form @submit.prevent="checkLength()">
+          <div class="tabs">
+            <button
+              type="button"
+              class="tab"
+              :class="$store.data.openTab === 'Builder' && 'active'"
+              @click="$store.data.openTab = 'Builder'"
+            >
+              Builder
+            </button>
+            <button
+              type="button"
+              class="tab"
+              :class="$store.data.openTab === 'Recent' && 'active'"
+              @click="$store.data.openTab = 'Recent'"
+            >
+              Recent
+            </button>
+          </div>
+          {% include "builder-tab.njk" %}
+          {% include "recent-tab.njk" %}
+        </form>
+        <pre x-text="JSON.stringify($store.data, false, 2)"></pre>
+      </div>
+    </div>
+    {{ './node_modules/alpinejs/dist/cdn.js' | inlineFromFile | safe }}
+  </body>
+</html>

@@ -1,24 +1,26 @@
 {
-  "name": "figma-mock-builder",
+  "name": "eleventy-figma-plugin-template",
   "version": "1.0.0",
-  "description": "A figma plugin to generate placeholder data with custom date formats.",
+  "description": "This is a template to build the single html file from multiple files using Eleventy.js.",
   "main": "code.js",
   "scripts": {
-    "build:code": "tsc -p tsconfig.json",
-    "watch": "npm run watch:code & npm run watch:ui",
-    "watch:code": "tsc-watch --noClear -p tsconfig.json",
-    "watch:ui": "node ./_build"
+    "build:eleventy": "npx @11ty/eleventy",
+    "build:ts": "tsc -p tsconfig.json",
+    "build": "npm run build:eleventy & npm run build:ts",
+    "dev:eleventy": "npx @11ty/eleventy --serve",
+    "dev:ts": "npm run build:ts -- --watch",
+    "dev": "npm run dev:eleventy & npm run dev:ts"
   },
-  "author": "Nathan Blaylock",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2",
-    "@figma/plugin-typings": "^1.44.0",
+    "@11ty/eleventy": "^2.0.1",
+    "@figma/plugin-typings": "*",
+    "@sherby/eleventy-plugin-files-minifier": "^1.1.1",
     "alpinejs": "^3.12.2",
-    "chalk": "^4.1.2",
     "modern-normalize": "^2.0.0",
-    "node-watch": "^0.7.3",
-    "sass": "^1.51.0",
-    "tsc-watch": "^5.0.3"
+    "sass": "^1.63.3",
+    "typescript": "*"
   }
 }
