@@ -4,9 +4,7 @@ import {
   randNumber,
 } from "https://cdn.jsdelivr.net/npm/@ngneat/falso@6.4.0/+esm";
 
-let falso = [];
-
-falso.push(
+Alpine.store("data").falso = [
   {
     function: randFirstName,
     text: "First Name",
@@ -28,10 +26,8 @@ falso.push(
     text: "Integer",
     category: "Numbers",
     config: {
-      min: 1000, 
-      max: 100000,
+      min: 0, 
+      max: 1000,
     },
   },
-);
-
-Alpine.store("data").falso = falso;
+];

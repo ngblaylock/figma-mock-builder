@@ -64,6 +64,11 @@ input{
 button:focus,
 input:focus {
   outline-color: $primary;
+  outline-offset: 3px;
+}
+div[contenteditable]{
+  outline: none;
+  // background: $gray;
 }
 .btn {
   padding: 8px 12px;

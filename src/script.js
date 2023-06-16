@@ -15,24 +15,45 @@ const checkLength = () => {
   parent.postMessage({ pluginMessage: { type: "check length" } }, "*");
 };
 
-const getFakeData = (text) => {
-  let val = Alpine.store("data").falso.find((f) => f.text === text);
-  return val?.function(val?.config) || "";
+const openPopup = () => {
+  Alpine.store("data").showInsertTypes = !Alpine.store("data").showInsertTypes;
 };
 
 const insertFalsoBlock = (falsoObj) => {
-  console.log(falsoObj.text);
-}
+  // Inserts into the builder tab from the selection made
+  const selection = window.getSelection();
 
-const unEscapeCharacters = (str) => {
-  // This is necessary to convert characters like &nbsp; to ' ' and &amp; to '&'
-  var parser = new DOMParser();
-  var parsedHTML = parser.parseFromString(str, "text/html");
-  return parsedHTML.documentElement.innerText;
+  if (selection.rangeCount > 0) {
+    const span = document.createElement("span");
+    span.textContent = falsoObj.text;
+    span.setAttribute("contenteditable", "false");
+    const range = selection.getRangeAt(0);
+    range.deleteContents();
+    range.insertNode(span);
+
+    // Set the cursor right after the inserted span
+    const newRange = document.createRange();
+    newRange.setStartAfter(span);
+    newRange.collapse(true);
+
+    selection.removeAllRanges();
+    selection.addRange(newRange);
+  }
+
+  console.log(falsoObj.text);
+  Alpine.store("data").showInsertTypes = false;
 };
 
 const insertData = () => {
   console.log("inserting...");
+
+  const unEscapeCharacters = (str) => {
+    // This is necessary to convert characters like &nbsp; to ' ' and &amp; to '&'
+    var parser = new DOMParser();
+    var parsedHTML = parser.parseFromString(str, "text/html");
+    return parsedHTML.documentElement.innerText;
+  };
+
   let builderContent = document.querySelector(".builder-content").innerHTML;
   let builderArray = builderContent.replace(
     /<span contenteditable="false">(.*?)<\/span>/g,
@@ -46,7 +67,9 @@ const insertData = () => {
     builderArray.forEach((str) => {
       if (str.startsWith("|>|>")) {
         let funcTextName = str.replace("|>|>", "");
-        let foundFuncObj = Alpine.store("data").falso.find((obj) => obj.text == funcTextName);
+        let foundFuncObj = Alpine.store("data").falso.find(
+          (obj) => obj.text == funcTextName
+        );
         if (foundFuncObj) {
           textNodeBuiltData.push(foundFuncObj.function(foundFuncObj.config));
         }
@@ -71,5 +94,21 @@ document.addEventListener("alpine:init", () => {
     showInsertTypes: false,
     openTab: "Builder",
     nodes: 1,
+    search: "",
+    falso: [],
+    get categorizedFalso() {
+      let category = [];
+      this.falso.forEach((f) => {
+        if (f.text.toLowerCase().includes(this.search.toLowerCase())) {
+          const foundCategoryIndex = category.findIndex((c) => {
+            return c.category === f.category;
+          });
+          foundCategoryIndex < 0
+            ? category.push({ category: f.category, functions: [f] })
+            : category[foundCategoryIndex].functions.push(f);
+        }
+      });
+      return category;
+    },
   });
 });

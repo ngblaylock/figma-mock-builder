@@ -2,18 +2,23 @@
   <button
     type="button"
     class="btn btn-insert-mock"
-    @click="$store.data.showInsertTypes = !$store.data.showInsertTypes"
+    @click="openPopup"
   >
     + Insert Mock Type
   </button>
   <div class="popup" :class="$store.data.showInsertTypes && 'open'">
     <div class="popup-content">
       <div class="popup-search">
-        <input type="search" placeholder="Search" />
+        <input type="search" placeholder="Search" x-model="$store.data.search" />
       </div>
       <div class="popup-section">
-        <template x-for="option in $store.data.falso" :key="option.text">
-          <button type="button" x-text="option.text" @click="insertFalsoBlock(option)"></button>
+        <template x-for="category in $store.data.categorizedFalso" :key="category.category">
+          <div class="popup-section">
+            <h2 x-text="category.category"></h2>
+            <template x-for="fn in category.functions" :key="fn.text">
+              <button type="button" x-text="fn.text" @click="insertFalsoBlock(fn)"></button>
+            </template>
+          </div>
         </template>
       </div>
       {#
