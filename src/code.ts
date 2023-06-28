@@ -46,7 +46,6 @@ figma.ui.onmessage = async (msg) => {
         node.characters = msg.insertIntoSelectedTextNodes.pop();
       }
     }
-    figma.closePlugin();
   }
   else if (msg.type === "cancel") {
     figma.closePlugin();
