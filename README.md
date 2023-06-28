@@ -22,7 +22,3 @@ You only need to do that once. After that you can open it like any other plugin.
 2. Click the profile picture
 3. Plugins
 4. Scroll down to "In Development". Add the plugin if it isn't already there.
-
-## Known Issues
-
-- With integer, adding a min that is higher than max will not display
