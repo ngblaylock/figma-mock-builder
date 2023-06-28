@@ -1,17 +1,14 @@
 # Mock Builder Development
 
-> This is based off of my Placeholdate plugin
+## Links
 
-<!-- > See the [Mock Builder plugin page](https://www.figma.com/community/plugin/1098444899707858859/Placeholdate) for using Mock Builder in Figma. -->
+- [Designs](https://www.figma.com/file/dJyZrL0cQk46KJbkn14pGd/Mock-Builder-Plugin?type=design&node-id=0-1&mode=design&t=JUJt2iRniZ5XXOYz-0)
+<!-- - [Mock Builder plugin page](https://www.figma.com/community/plugin/1098444899707858859/Placeholdate) -->
 
-To get started:
+## Get started
 
 1. `npm install`: Install package dependencies
-2. `npm run watch`: Watch changes in `code.ts` and `./build-ui`
-
-## Editing the UI
-
-When editing the UI, only edit changes in the `build-ui` directory. Running `npm run watch` will watch for changes there (as well as `code.ts`) and auto generate the ui.html file. This allows you to use Sass for styles and chunk up the other content as needed.
+2. `npm run dev`: Watch changes in `./src`
 
 ## Try it in Figma
 
@@ -28,4 +25,4 @@ You only need to do that once. After that you can open it like any other plugin.
 
 ## Known Issues
 
-- [ ] typing in `<span>` will display `&lt;span&gt;`
+- With integer, adding a min that is higher than max will not display

@@ -36,7 +36,7 @@
           {% include "builder-tab.njk" %}
           {% include "recent-tab.njk" %}
         </form>
-        <pre x-text="JSON.stringify($store.data, false, 2)"></pre>
+        {# <pre x-text="JSON.stringify($store.data, false, 2)"></pre> #}
       </div>
     </div>
     {{ './node_modules/alpinejs/dist/cdn.js' | inlineFromFile | safe }}

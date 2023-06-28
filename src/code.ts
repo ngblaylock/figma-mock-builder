@@ -11,7 +11,7 @@ const setTextNodesLength = () => {
 
 // * Uncomment the following to test new users without clientStorage set
 // figma.clientStorage.deleteAsync('mockBuilder').then(res => {
-//   console.log("Deleted", res);
+//   console.info("Deleted", res);
 // })
 
 figma.clientStorage.getAsync("mockBuilder").then((res) => {
@@ -34,7 +34,7 @@ figma.ui.onmessage = async (msg) => {
     } else {
       figma.ui.postMessage({ message: "compile data", textElementsSelected });
     }
-  }
+  }  
   else if (msg.type === "insert data") {
     figma.clientStorage.setAsync("mockBuilder", msg.clientStorageData);
     for (const node of figma.currentPage.selection) {
