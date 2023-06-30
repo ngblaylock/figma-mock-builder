@@ -37,7 +37,9 @@ const insertFalsoBlock = (falsoObj) => {
         if (input?.configModel && input?.type !== "select") {
           span.innerHTML += `<input type="${input.type}" name="${
             input.configModel
-          }" id=${"u" + Math.random().toString(26).slice(2)} placeholder="${v}" />`;
+          }" id=${
+            "u" + Math.random().toString(26).slice(2)
+          } placeholder="${v}" />`;
         } else if (input?.configModel && input?.type === "select") {
           // add in select here
         } else if (input?.text) {
@@ -66,13 +68,6 @@ const insertFalsoBlock = (falsoObj) => {
 const insertData = () => {
   console.info("inserting...");
 
-  const unEscapeCharacters = (str) => {
-    // This is necessary to convert characters like &nbsp; to ' ' and &amp; to '&'
-    var parser = new DOMParser();
-    var parsedHTML = parser.parseFromString(str, "text/html");
-    return parsedHTML.documentElement.innerText;
-  };
-
   let builderContent = document.querySelector(".builder-content").innerHTML;
   var tempElement = document.createElement("div");
   tempElement.innerHTML = builderContent;
@@ -83,8 +78,15 @@ const insertData = () => {
   for (var i = 0; i < childNodes.length; i++) {
     let node = childNodes[i];
     if (node.nodeName === "#text") {
-      // simply add in the text
-      insertTemplate.push(node.nodeValue);
+      // The following if/else resolves a bug. If the user pastes in text at any point, it will create two text nodes. This will appear to be inline in the builder content but will insert in Figma as Div-s with breaks. This check makes sure that sequential text nodes will be inserted as one string value.
+      if (
+        insertTemplate.length &&
+        typeof insertTemplate[insertTemplate.length - 1] === "string"
+      ) {
+        insertTemplate[insertTemplate.length - 1] += node.nodeValue;
+      } else {
+        insertTemplate.push(node.nodeValue);
+      }
     } else if (
       node.nodeName === "SPAN" &&
       node.getAttribute("contenteditable") == "false"
@@ -113,17 +115,18 @@ const insertData = () => {
   let insertIntoSelectedTextNodes = [];
   for (let i = 0; i < Alpine.store("data").nodes; i++) {
     // compiling the template for each text node
-    let generatedTemplateString = ''
-    insertTemplate.forEach(item => {
-      if(typeof(item) === 'string'){
+    let generatedTemplateString = "";
+    insertTemplate.forEach((item) => {
+      if (typeof item === "string") {
         generatedTemplateString += item;
-      }
-      else{
+      } else {
         // This should be the dynamic data as an object
-        let falsoObj = Alpine.store('data').falso.find(f => item.text === f.text)
-        generatedTemplateString += falsoObj.function(item.config)
+        let falsoObj = Alpine.store("data").falso.find(
+          (f) => item.text === f.text
+        );
+        generatedTemplateString += falsoObj.function(item.config);
       }
-    })
+    });
     insertIntoSelectedTextNodes.push(generatedTemplateString);
   }
   parent.postMessage(
@@ -158,10 +161,20 @@ document.addEventListener("alpine:init", () => {
       return category;
     },
   });
+  let builderContent = document.querySelector(".builder-content");
 });
 
 window.addEventListener("load", function () {
   const textBox = document.querySelector(".builder-content");
+  textBox.addEventListener("paste", (event) => {
+    event.preventDefault();
+    let paste = (event.clipboardData || window.clipboardData).getData("text");
+    const selection = window.getSelection();
+    if (!selection.rangeCount) return;
+    selection.deleteFromDocument();
+    selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+    selection.collapseToEnd();
+  });
   textBox.focus();
   const range = document.createRange();
   range.selectNodeContents(textBox);
