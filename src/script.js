@@ -50,7 +50,9 @@ const insertFalsoBlock = (falsoObj) => {
     range.insertNode(span);
 
     // Create an empty text node
-    const emptyTextNode = document.createTextNode("\u00A0");
+    // const emptyTextNode = document.createTextNode("\u00A0"); // This will add a space after the input
+    // const emptyTextNode = document.createTextNode("\u200B"); // this adds a zero-width space in the builder, but outputs a space once inserted
+    const emptyTextNode = document.createTextNode("");
     span.parentNode.insertBefore(emptyTextNode, span.nextSibling);
 
     // Set the cursor right after the empty text node
