@@ -15,8 +15,12 @@ const checkLength = () => {
   parent.postMessage({ pluginMessage: { type: "check length" } }, "*");
 };
 
-const openPopup = () => {
-  Alpine.store("data").showInsertTypes = !Alpine.store("data").showInsertTypes;
+const resetInsertMockTypeDropUp = (value) => {
+  if (value) {
+    Alpine.store("data").search = "";
+    document.querySelector(".popup-content").scrollTop = 0;
+    // document.querySelector(".popup-search input").focus();
+  }
 };
 
 const insertFalsoBlock = (falsoObj) => {

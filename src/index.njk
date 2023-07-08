@@ -12,7 +12,12 @@
     {{ './src/script.js' | inlineFromFile | safe }}
   </head>
   <body>
-    <div x-data x-cloak>
+    <div
+      x-data
+      x-cloak
+      @keyup.escape="$store.data.showInsertTypes = false"
+      x-init="$watch('$store.data.showInsertTypes', value => resetInsertMockTypeDropUp(value))"
+    >
       <div>
         <form @submit.prevent="checkLength()">
           <div class="tabs">
@@ -33,10 +38,11 @@
               Recent
             </button>
           </div>
-          {% include "builder-tab.njk" %}
-          {% include "recent-tab.njk" %}
+          {% include "builder-tab.njk" %} {% include "recent-tab.njk" %}
         </form>
-        {# <pre x-text="JSON.stringify($store.data, false, 2)"></pre> #}
+        {#
+        <pre x-text="JSON.stringify($store.data, false, 2)"></pre>
+        #}
       </div>
     </div>
     {{ './node_modules/alpinejs/dist/cdn.js' | inlineFromFile | safe }}

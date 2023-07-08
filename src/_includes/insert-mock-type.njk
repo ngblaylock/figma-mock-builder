@@ -1,34 +1,37 @@
-<div class="builder-btn">
+<div class="builder-btn" @click.outside="$store.data.showInsertTypes = false">
   <button
     type="button"
     class="btn btn-insert-mock"
-    @click="openPopup"
+    @click="$store.data.showInsertTypes = !$store.data.showInsertTypes"
   >
     + Insert Mock Type
   </button>
   <div class="popup" :class="$store.data.showInsertTypes && 'open'">
     <div class="popup-content">
       <div class="popup-search">
-        <input type="search" placeholder="Search" x-model="$store.data.search" />
+        <input
+          type="search"
+          placeholder="Search"
+          x-model="$store.data.search"
+        />
       </div>
       <div class="popup-section">
-        <template x-for="category in $store.data.categorizedFalso" :key="category.category">
+        <template
+          x-for="category in $store.data.categorizedFalso"
+          :key="category.category"
+        >
           <div class="popup-section">
             <h2 x-text="category.category"></h2>
             <template x-for="fn in category.functions" :key="fn.text">
-              <button type="button" x-text="fn.text" @click="insertFalsoBlock(fn)"></button>
+              <button
+                type="button"
+                x-text="fn.text"
+                @click="insertFalsoBlock(fn)"
+              ></button>
             </template>
           </div>
         </template>
       </div>
-      {#
-      <div class="popup-section">
-        <h2>Text</h2>
-        <button type="button">Sentences</button>
-        <button type="button">Title</button>
-        <button type="button">Text</button>
-      </div>
-      #}
     </div>
   </div>
 </div>
