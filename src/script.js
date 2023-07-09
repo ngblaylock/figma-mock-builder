@@ -1,3 +1,5 @@
+let builderSelectionRange = {}; // This keeps track of what the user's cursor position or range of selection was in the builder.
+
 onmessage = (event) => {
   // console.clear();
   let message = event.data.pluginMessage.message;
@@ -15,8 +17,31 @@ const checkLength = () => {
   parent.postMessage({ pluginMessage: { type: "check length" } }, "*");
 };
 
+const getLastCursorPosition = () => {
+  var selection = window.getSelection();
+  var start = 0;
+  var end = 0;
+
+  if (selection.rangeCount > 0) {
+    var range = selection.getRangeAt(0);
+    var preSelectionRange = range.cloneRange();
+    preSelectionRange.selectNodeContents(
+      document.querySelector(".builder-content")
+    );
+    preSelectionRange.setEnd(range.startContainer, range.startOffset);
+    start = preSelectionRange.toString().length;
+
+    end = start + range.toString().length;
+  }
+
+  builderSelectionRange = { start: start, end: end };
+  console.log(builderSelectionRange);
+};
+
 const resetInsertMockTypeDropUp = (value) => {
   if (value) {
+    console.log("Last cursor position:", getLastCursorPosition());
+
     Alpine.store("data").search = "";
     document.querySelector(".popup-content").scrollTop = 0;
     // document.querySelector(".popup-search input").focus();
@@ -25,8 +50,27 @@ const resetInsertMockTypeDropUp = (value) => {
 
 const insertFalsoBlock = (falsoObj) => {
   // Inserts into the builder tab from the selection made
-  const selection = window.getSelection();
 
+  const setCursorSelection = () => {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+  
+    if (range.startContainer.nodeName === 'SPAN' || range.endContainer.nodeName === 'SPAN') {
+      const spanElement = range.startContainer.nodeName === 'SPAN' ? range.startContainer : range.endContainer;
+      const parentElement = spanElement.parentNode;
+      console.log("In Here...");
+  
+      // Remove the entire span element
+      parentElement.removeChild(spanElement);
+  
+      // Update the selection with the adjusted range
+      selection.removeAllRanges();
+    }
+  };
+  setCursorSelection();
+
+  // Inserts the falso block where the cursor or selection was made
+  const selection = window.getSelection();
   if (selection.rangeCount > 0) {
     const span = document.createElement("span");
     span.textContent = falsoObj.text;
