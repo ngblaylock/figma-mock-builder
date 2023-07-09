@@ -34,7 +34,7 @@ figma.ui.onmessage = (msg) => __awaiter(void 0, void 0, void 0, function* () {
     setTextNodesLength();
     if (msg.type === "check length") {
         if (!textElementsSelected) {
-            figma.closePlugin("No text nodes were selected. Did you select a group or frame instead?");
+            figma.notify('No text nodes were selected. Did you select a group or frame instead?');
         }
         else {
             figma.ui.postMessage({ message: "compile data", textElementsSelected });
@@ -56,6 +56,6 @@ figma.ui.onmessage = (msg) => __awaiter(void 0, void 0, void 0, function* () {
         figma.closePlugin();
     }
     else {
-        figma.closePlugin('An unexpected error occurred.');
+        figma.notify('An unexpected error occurred.');
     }
 });
