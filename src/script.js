@@ -1,3 +1,18 @@
+function getSnapshotOfSelection() {
+  const selection = window.getSelection();
+  const snapshot = {
+    anchorNode: selection.anchorNode,
+    anchorOffset: selection.anchorOffset,
+    focusNode: selection.focusNode,
+    focusOffset: selection.focusOffset,
+    isCollapsed: selection.isCollapsed,
+    rangeCount: selection.rangeCount
+  };
+  return snapshot;
+}
+
+let selection;
+
 onmessage = (event) => {
   // console.clear();
   let message = event.data.pluginMessage.message;
@@ -17,6 +32,7 @@ const checkLength = () => {
 
 const resetInsertMockTypeDropUp = (value) => {
   if (value) {
+    selection = getSnapshotOfSelection();
     Alpine.store("data").search = "";
     document.querySelector(".popup-content").scrollTop = 0;
     // document.querySelector(".popup-search input").focus();
@@ -25,7 +41,7 @@ const resetInsertMockTypeDropUp = (value) => {
 
 const insertFalsoBlock = (falsoObj) => {
   // Inserts into the builder tab from the selection made
-  const selection = window.getSelection();
+  console.log(selection);
 
   if (selection.rangeCount > 0) {
     const span = document.createElement("span");
