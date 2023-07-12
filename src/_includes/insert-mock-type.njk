@@ -8,13 +8,14 @@
   </button>
   <div class="popup" :class="$store.data.showInsertTypes && 'open'">
     <div class="popup-content">
-      <div class="popup-search">
+      {# Issue #12 #}
+      {# <div class="popup-search">
         <input
           type="search"
           placeholder="Search"
           x-model="$store.data.search"
         />
-      </div>
+      </div> #}
       <div class="popup-section">
         <template
           x-for="category in $store.data.categorizedFalso"

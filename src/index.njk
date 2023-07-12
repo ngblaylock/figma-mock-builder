@@ -21,7 +21,7 @@
       <div>
         <form @submit.prevent="checkLength()">
           <div class="tabs">
-            <button
+            {# <button
               type="button"
               class="tab"
               :class="$store.data.openTab === 'Builder' && 'active'"
@@ -36,7 +36,7 @@
               @click="$store.data.openTab = 'Recent'"
             >
               Recent
-            </button>
+            </button> #}
           </div>
           {% include "builder-tab.njk" %} {% include "recent-tab.njk" %}
         </form>

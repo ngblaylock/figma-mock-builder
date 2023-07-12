@@ -31,7 +31,7 @@ body {
   color: $dark;
 }
 section {
-  padding: 1em;
+  padding: 12px;
 }
 pre {
   background: $dark;
@@ -67,9 +67,14 @@ input:focus {
   outline-offset: 3px;
 }
 div[contenteditable] {
-  outline-offset: 6px;
-  // outline: none;
-  // background: $gray;
+  outline: none;
+  border: 2px solid lighten($gray, 6);
+  background: lighten($gray, 9);
+  border-radius: 4px;
+  padding: 12px;
+  &:focus-within{
+    border: 2px solid $gray;
+  }
 }
 .btn {
   padding: 8px 12px;
@@ -245,7 +250,12 @@ div[contenteditable] {
     color: $gray;
     font-weight: 400;
   }
+  .popup-section > template + .popup-section h2{
+    border: none;
+    margin-top: 0;
+  }
 }
+
 
 // Utilities
 .h-100 {
