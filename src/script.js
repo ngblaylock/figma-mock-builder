@@ -68,6 +68,16 @@ const insertFalsoBlock = (falsoObj) => {
     selection.addRange(newRange);
   }
 
+  // This fixes bug #14 where inserting a FalsoBlock inside another FalsoBlock will just replace the outer one with the new one.
+  let nestedFalsoBlock = document.querySelectorAll(
+    ".builder-content span[data-function] span[data-function]"
+  );
+  nestedFalsoBlock.forEach((span) => {
+    let parent = span.parentElement;
+    parent.after(span);
+    parent.remove();
+  });
+
   Alpine.store("data").showInsertTypes = false;
 };
 
