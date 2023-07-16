@@ -73,7 +73,6 @@ const insertFalsoBlock = (falsoObj) => {
     ".builder-content span[data-function] span[data-function]"
   );
   nestedFalsoBlock.forEach((span) => {
-    console.log(span.parentElement);
     let parent = span.parentElement;
     parent.after(span);
     parent.remove();
