@@ -164,6 +164,15 @@ div[contenteditable] {
   flex-direction: column;
   height: 100%;
 }
+// Don't allow the user to click "Insert Mock Type" unless they are focused in .builder-content
+.builder-content-section:not(:focus-within){
+  .btn{
+    transform: scale(.95);
+    opacity: .2;
+    pointer-events: none;
+    user-select: none;
+  }
+}
 .builder-content {
   height: 100%;
   span {
