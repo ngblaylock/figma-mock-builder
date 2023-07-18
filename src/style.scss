@@ -175,11 +175,14 @@ div[contenteditable] {
 }
 .builder-content {
   height: 100%;
-  span {
+  span[contenteditable] {
     font-size: 0.8em;
     background: $gray;
     padding: 2px 12px;
     border-radius: 100px;
+  }
+  div{
+    margin-top: 1em;
   }
   input {
     max-width: 40px;
