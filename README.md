@@ -18,7 +18,8 @@ You only need to do that once. After that you can open it like any other plugin.
 
 ## Publish the Changes
 
-1. Go to Figma's Home page
-2. Click the profile picture
-3. Plugins
-4. Scroll down to "In Development". Add the plugin if it isn't already there.
+1. Update the version in package.json
+2. Go to Figma's Home page
+3. Click the profile picture
+4. Plugins
+5. Scroll down to "In Development". Add the plugin if it isn't already there.
