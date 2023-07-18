@@ -1,6 +1,6 @@
 {
   "name": "figma-mock-builder",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Quickly build fake data for Figma.",
   "main": "code.js",
   "scripts": {
