@@ -54,8 +54,6 @@ const insertFalsoBlock = (falsoObj) => {
     range.insertNode(span);
 
     // Create an empty text node
-    // const emptyTextNode = document.createTextNode("\u00A0"); // This will add a space after the input
-    // const emptyTextNode = document.createTextNode("\u200B"); // this adds a zero-width space in the builder, but outputs a space once inserted
     const emptyTextNode = document.createTextNode("");
     span.parentNode.insertBefore(emptyTextNode, span.nextSibling);
 
@@ -85,13 +83,20 @@ const insertData = () => {
   console.info("inserting...");
 
   let builderContent = document.querySelector(".builder-content").innerHTML;
-  var tempElement = document.createElement("div");
+  // Fix issue #9 - If the user adds line breaks in .builder-content only the first part is added in.
+  builderContent = builderContent
+    .replaceAll("<div>", "\n")
+    .replaceAll("</div>", "");
+
+  console.log(builderContent);
+
+  let tempElement = document.createElement("div");
   tempElement.innerHTML = builderContent;
-  var childNodes = tempElement.childNodes;
+  let childNodes = tempElement.childNodes;
 
   let insertTemplate = [];
 
-  for (var i = 0; i < childNodes.length; i++) {
+  for (let i = 0; i < childNodes.length; i++) {
     let node = childNodes[i];
     if (node.nodeName === "#text") {
       // The following if/else resolves a bug. If the user pastes in text at any point, it will create two text nodes. This will appear to be inline in the builder content but will insert in Figma as Div-s with breaks. This check makes sure that sequential text nodes will be inserted as one string value.
@@ -177,7 +182,6 @@ document.addEventListener("alpine:init", () => {
       return category;
     },
   });
-  let builderContent = document.querySelector(".builder-content");
 });
 
 window.addEventListener("load", function () {
